@@ -4,7 +4,6 @@ import { projects } from "@/data";
 import { FaLocationArrow } from "react-icons/fa6";
 import { PinContainer } from "./ui/Pin";
 
-// Method to handle redirection with explicit typing
 const handleRedirect = (url: string | undefined) => {
   if (url) {
     window.open(url, "_blank", "noopener noreferrer");
@@ -13,18 +12,46 @@ const handleRedirect = (url: string | undefined) => {
 
 const RecentProjects = () => {
   return (
-    <div className="py-20">
+    <div className="relative py-20">
       <h1 className="heading">
         A small selection of{" "}
-        <span className="text-purple">recent projects</span>
+        <span className="text-purple"> projects</span>
       </h1>
+
+      {/* Animated Avif Image - Left */}
+      <div className="absolute left-[-3%] top-1/2 animate-bounce-slow">
+        <img
+          src="\shape5.avif"
+          alt="Floating decoration"
+          className="w-40 h-40 md:w-60 md:h-60 opacity-80"
+        />
+      </div>
+
+
+      {/* Animated Avif Image - Right */}
+     <div className="absolute right-[-3%] top-[28%] animate-bounce-slow">
+  <img
+    src="\shape7.avif"
+    alt="Floating decoration"
+    className="w-40 h-40 md:w-60 md:h-60 opacity-100"
+  />
+</div>
+ <div className="absolute right-[-3%] top-[75%] animate-bounce-slow">
+  <img
+    src="\shape6.avif"
+    alt="Floating decoration"
+    className="w-40 h-40 md:w-60 md:h-60 opacity-100"
+  />
+</div>
+
+
+
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {projects.map((item) => (
           <div
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             key={item.id}
           >
-            {/* Use the click handler on the entire project card */}
             <div
               onClick={() => handleRedirect(item.link)}
               className="cursor-pointer"
@@ -73,7 +100,6 @@ const RecentProjects = () => {
                     ))}
                   </div>
 
-                  {/* GitHub visit link */}
                   <a
                     href={item.link}
                     target="_blank"

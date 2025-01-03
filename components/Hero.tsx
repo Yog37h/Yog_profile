@@ -7,6 +7,19 @@ import { TextCycling } from "./ui/TextCycling";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const Hero = () => {
+  const scrollToSection = (id: string) => {
+    const section = document.querySelector(id);
+    if (section) {
+      const navbarHeight = document.getElementById("floating-nav")?.offsetHeight || 0; // Adjust for navbar height
+      const offsetPosition = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="pb-20 pt-36">
       {/**
@@ -98,13 +111,19 @@ const Hero = () => {
           </div>
 
           {/* Magic Button */}
-          {/* Add spacing between "Show my work" button and the above content */}
-          <a href="#about" className="block mt-12 md:mt-16">
+          <a
+            href="#about"
+            className="block mt-12 md:mt-12"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#about");
+            }}
+          >
             <MagicButton
               title="Explore me"
               icon={<FaLocationArrow />}
               position="right"
-              otherClasses="mt-0" // Add more margin if needed for the button itself
+              otherClasses="mt-0"
             />
           </a>
         </div>

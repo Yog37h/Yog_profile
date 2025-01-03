@@ -83,3 +83,16 @@
     @apply font-bold text-4xl md:text-5xl text-center;
   }
 }
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}

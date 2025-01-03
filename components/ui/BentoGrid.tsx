@@ -210,7 +210,7 @@ export const BentoGridItem = ({
       <MagicButton
         title={copied ? "Thanks for the hi-fi dude !" : "Open my CV"}
         icon={<IoCopyOutline />}
-        position="left"
+        position="center"
         handleClick={handleClick}
         otherClasses="!bg-[#161A31]"
       />
