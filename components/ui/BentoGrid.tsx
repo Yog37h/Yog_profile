@@ -135,7 +135,7 @@ export const BentoGridItem = ({
 
         {id === 6 && (
           <BackgroundGradientAnimation>
-            <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
+            <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-center lg:text-7xl"></div>
           </BackgroundGradientAnimation>
         )}
 
@@ -221,6 +221,17 @@ export const BentoGridItem = ({
     </div>
   );
 };
+
+<div className="lg:col-span-2 md:col-span-3 md:row-span-1 text-center relative">
+  <div className="absolute inset-0 flex flex-col justify-center items-center">
+    <h1 className="justify-center md:max-w-full max-w-60 text-center">
+      Sparks your interest? Gimme a hi-fi & Take a peek at my CV!
+    </h1>
+    
+  </div>
+  
+</div>
+
 
 if (typeof window !== "undefined" && window.document) {
   const style = window.document.createElement("style");

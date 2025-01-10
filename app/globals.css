@@ -96,3 +96,42 @@
 .animate-bounce-slow {
   animation: bounce-slow 3s ease-in-out infinite;
 }
+
+/* Global CSS to handle the layout responsiveness */
+@media (max-width: 768px) {
+  /* Adjust for smaller screens */
+  .md\\:hidden {
+    display: block !important;
+  }
+
+  .md\\:block {
+    display: none !important;
+  }
+
+  .space-y-6 {
+    margin-top: 12px;
+  }
+
+  .space-x-4 {
+    margin-top: 12px;
+  }
+  
+  @media (max-width: 768px) {
+  [id="6"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  [id="6"] .titleClassName {
+    margin: 0 auto; /* Center the text block horizontally */
+  }
+
+  [id="6"] button {
+    margin: 1rem auto; /* Ensure buttons are centered */
+  }
+}
+
+}

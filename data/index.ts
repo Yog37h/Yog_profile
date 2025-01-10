@@ -8,7 +8,7 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
+    title: "Coding Dreams into Reality",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -18,7 +18,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "I'm very flexible with time zone communications",
+    title: "An Extrovert with technology in hands to explore",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -29,7 +29,7 @@ export const gridItems = [
   {
     id: 3,
     title: "Tech stack",
-    description: "I love to improve my",
+    description: "I desire to accelerate my",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-right",
@@ -38,13 +38,13 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Libraries and Toolkits",
+    title: "Languages and Toolkits",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-start",
     img: "/grid.svg",
-    spareImg: "/b4.svg",
+    spareImg: "",
   },
 
   {
@@ -58,15 +58,18 @@ export const gridItems = [
     spareImg: "/grid.svg",
   },
   {
-    id: 6,
-    title: "Sparks your interest ? Gimme a hi-fi & Take a peek at my CV !",
-    description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1 text-center",
-    imgClassName: "",
-    titleClassName: "justify-center md:max-w-full max-w-60 text-center",
-    img: "",
-    spareImg: "",
-  },
+  id: 6,
+  title: "Sparks your interest? Gimme a hi-fi & Take a peek at my CV!",
+  description: "",
+  className: "lg:col-span-2 md:col-span-3 md:row-span-1 text-center flex flex-col", // Flex for content arrangement
+  imgClassName: "",
+  titleClassName: "justify-center md:max-w-full max-w-60 text-center mx-auto", // Centering with `mx-auto`
+  img: "",
+  spareImg: "",
+},
+
+
+
 ];
 
 export const projects = [
@@ -161,14 +164,14 @@ export const testimonials = [
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
+    title: "Cloudstack App Dev Intern - Esilicon Labs",
     desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
+    title: "Billbot GenAI Intern - SAP Labs India",
     desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
@@ -178,14 +181,14 @@ export const workExperience = [
     title: "Freelance App Dev Project",
     desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
     className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
+    thumbnail: "/exp4.svg",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
+    title: "Project Developement Lead",
     desc: "Developed and maintained user-facing features using modern frontend technologies.",
     className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
+    thumbnail: "/exp3.svg",
   },
 ];
 
