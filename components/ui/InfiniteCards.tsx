@@ -1,6 +1,8 @@
-import { cn } from "@/lib/utils";
+"use client"; // Add this if using Next.js for client-side rendering
+
+import { cn } from "@/lib/utils"; // Ensure this path matches your project structure
 import React, { useEffect, useRef, useState } from "react";
-import { useSwipeable } from "react-swipeable"; // Adding swipeable hook
+import { useSwipeable } from "react-swipeable";
 
 export const InfiniteMovingCards = ({
   items,
@@ -25,10 +27,25 @@ export const InfiniteMovingCards = ({
   const [start, setStart] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0); // Track the current card index
   const [visible, setVisible] = useState(true); // Track visibility of card for fade-in effect
-
-  const isMobile = window.innerWidth <= 768; // Mobile detection
+  const [isMobile, setIsMobile] = useState(false); // Dynamically track if the user is on mobile
 
   const swipeRef = useRef(null);
+
+  useEffect(() => {
+    // Check if running in a browser environment
+    const checkIsMobile = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth <= 768);
+      }
+    };
+
+    checkIsMobile(); // Initial check
+    window.addEventListener("resize", checkIsMobile); // Listen for resize events
+
+    return () => {
+      window.removeEventListener("resize", checkIsMobile); // Cleanup event listener
+    };
+  }, []);
 
   useEffect(() => {
     if (!isMobile) {
@@ -126,27 +143,17 @@ export const InfiniteMovingCards = ({
               }}
             >
               <blockquote>
-                <div
-                  aria-hidden="true"
-                  className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-                ></div>
-                <ul className="list-disc pl-5 space-y-2 relative z-20 text-sm md:text-lg leading-[1.6] text-white font-normal">
+                <ul className="list-disc pl-5 space-y-2 text-sm md:text-lg text-white font-normal">
                   {item.quote.map((point, i) => (
                     <li key={i}>{point}</li>
                   ))}
                 </ul>
-                <div className="relative z-20 mt-6 flex flex-row items-center">
-                  <div className="me-3">
-                    <img src="/profile.svg" alt="profile" />
+                <div className="mt-6 flex items-center">
+                  <img src="/profile.svg" alt="profile" className="me-3" />
+                  <div>
+                    <span className="text-xl font-bold text-white">{item.name}</span>
+                    <span className="text-sm text-white-200">{item.title}</span>
                   </div>
-                  <span className="flex flex-col gap-1">
-                    <span className="text-xl font-bold leading-[1.6] text-white">
-                      {item.name}
-                    </span>
-                    <span className="text-sm leading-[1.6] text-white-200 font-normal">
-                      {item.title}
-                    </span>
-                  </span>
                 </div>
               </blockquote>
             </li>
@@ -156,19 +163,16 @@ export const InfiniteMovingCards = ({
 
       {/* Mobile View - Manual Swipe with Fade-In Only and Infinite Loop */}
       {isMobile && (
-        <div
-          {...handlers} // Register swipe handlers
-          className="relative"
-        >
+        <div {...handlers} className="relative">
           <ul
             className="flex flex-wrap justify-center gap-4 transition-all duration-1000 ease-in-out"
-            style={{ opacity: visible ? 1 : 0 }} // Apply fade-in effect on visibility
+            style={{ opacity: visible ? 1 : 0 }}
           >
             {items.map((item, idx) => (
               <li
                 key={idx}
                 className={cn(
-                  "w-[80vw] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-800 p-5 md:p-16",
+                  "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16",
                   currentIndex === idx ? "block" : "hidden"
                 )}
                 style={{
@@ -178,27 +182,17 @@ export const InfiniteMovingCards = ({
                 }}
               >
                 <blockquote>
-                  <div
-                    aria-hidden="true"
-                    className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-                  ></div>
-                  <ul className="list-disc pl-5 space-y-2 relative z-20 text-sm md:text-lg leading-[1.6] text-white font-normal">
+                  <ul className="list-disc pl-5 space-y-2 text-sm md:text-lg text-white font-normal">
                     {item.quote.map((point, i) => (
                       <li key={i}>{point}</li>
                     ))}
                   </ul>
-                  <div className="relative z-20 mt-6 flex flex-row items-center">
-                    <div className="me-3">
-                      <img src="/profile.svg" alt="profile" />
+                  <div className="mt-6 flex items-center">
+                    <img src="/profile.svg" alt="profile" className="me-3" />
+                    <div>
+                      <span className="text-xl font-bold text-white">{item.name}</span>
+                      <span className="text-sm text-white-200">{item.title}</span>
                     </div>
-                    <span className="flex flex-col gap-1">
-                      <span className="text-xl font-bold leading-[1.6] text-white">
-                        {item.name}
-                      </span>
-                      <span className="text-sm leading-[1.6] text-white-200 font-normal">
-                        {item.title}
-                      </span>
-                    </span>
                   </div>
                 </blockquote>
               </li>
