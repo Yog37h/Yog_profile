@@ -94,7 +94,7 @@
 }
 
 .animate-bounce-slow {
-  animation: bounce-slow 3s ease-in-out infinite;
+  animation: bounce-slow 5s ease-in-out infinite;
 }
 
 /* Global CSS to handle the layout responsiveness */
@@ -135,3 +135,34 @@
 }
 
 }
+
+/* Initial state for images */
+.animated-image {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 1.5s ease-out;
+}
+
+/* Animation when visible */
+.animate-fly-in {
+  transform: translateY(10px);
+  opacity: 1;
+}
+
+
+/* Animation for flying in from the left */
+@keyframes flyin-left {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.flyin-left {
+  animation: flyin-left 1s ease-out forwards;
+}
+

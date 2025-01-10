@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaLocationArrow } from "react-icons/fa6";
 
@@ -7,6 +8,9 @@ import { TextCycling } from "./ui/TextCycling";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const Hero = () => {
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
+
   const scrollToSection = (id: string) => {
     const section = document.querySelector(id);
     if (section) {
@@ -24,8 +28,29 @@ const Hero = () => {
     }
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="pb-20 pt-36 relative">
+    <div className="pb-20 pt-36 relative" ref={sectionRef}>
       {/* Spotlights */}
       <div>
         <Spotlight
@@ -57,23 +82,23 @@ const Hero = () => {
           <img
             src="/tol1.avif"
             alt="Yogeshwaran"
-            className="rounded-full object-cover w-full lg:w-[150%]"
+            className={`rounded-full object-cover w-full lg:w-[150%] transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
           />
 
           {/* Top-Left Image */}
           <img
             src="/tol2.avif"
             alt="Additional Top Left"
-            className="absolute top-[-40px] left-[-40px] w-[30%] rounded-full shadow-md"
-            style={{ transform: "translateY(-10px)" }} // Elevation for laptop view
+            className={`absolute top-[-40px] left-[-40px] w-[30%] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
+            style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(-50%)" }} // Elevation for laptop view
           />
 
           {/* Bottom-Right Image */}
           <img
             src="/tol3.avif"
             alt="Additional Bottom Right"
-            className="absolute bottom-[-40px] right-[-40px] w-[30%] rounded-full shadow-md"
-            style={{ transform: "translateY(-10px)" }} // Elevation for laptop view
+            className={`absolute bottom-[-40px] right-[-40px] w-[30%] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : 'translate-x-full'}`}
+            style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(50%)" }} // Elevation for laptop view
           />
         </div>
 
@@ -143,19 +168,19 @@ const Hero = () => {
             <img
               src="/tol1.avif"
               alt="Yogeshwaran"
-              className="w-32 h-32 rounded-full object-cover shadow-md animate-bounce-slow"
+              className={`w-32 h-32 rounded-full object-cover shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
             />
             {/* Top-Left image with adjusted positioning */}
             <img
               src="/tol2.avif"
               alt="Additional Top Left"
-              className="absolute top-[-20px] left-[-40px] w-16 rounded-full shadow-md animate-bounce-slow"  
+              className={`absolute top-[-20px] left-[-40px] w-16 rounded-full shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}  
             />
             {/* Bottom-Right image */}
             <img
               src="/tol3.avif"
               alt="Additional Bottom Right"
-              className="absolute bottom-[-10px] right-[-30px] w-16 rounded-full shadow-md animate-bounce-slow"
+              className={`absolute bottom-[-10px] right-[-30px] w-16 rounded-full shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : 'translate-x-full'}`}
             />
           </div>
 

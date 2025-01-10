@@ -1,6 +1,7 @@
 "use client";
 
 import { projects } from "@/data";
+import { useEffect, useRef } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { PinContainer } from "./ui/Pin";
 
@@ -11,41 +12,71 @@ const handleRedirect = (url: string | undefined) => {
 };
 
 const RecentProjects = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const images = section.querySelectorAll<HTMLDivElement>(".animated-image");
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          images.forEach((image) => {
+            image.classList.add("animate-fly-in");
+          });
+        } else {
+          images.forEach((image) => {
+            image.classList.remove("animate-fly-in");
+          });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="relative py-20">
+    <div ref={sectionRef} className="relative py-20">
       <h1 className="heading">
         A small selection of{" "}
-        <span className="text-purple"> projects</span>
+        <span className="text-purple">projects</span>
       </h1>
 
       {/* Animated Avif Image - Left */}
-      <div className="absolute left-[-3%] top-1/2 animate-bounce-slow">
+      <div className="absolute left-[-3%] top-1/2 animated-image opacity-0">
         <img
-          src="\shape5.avif"
+          src="/shape5.avif"
           alt="Floating decoration"
-          className="w-40 h-40 md:w-60 md:h-60 opacity-80"
+          className="w-40 h-40 md:w-60 md:h-60"
         />
       </div>
 
+      {/* Animated Avif Image - Right - Top */}
+      <div className="absolute right-[-3%] top-[28%] animated-image opacity-0">
+        <img
+          src="/shape7.avif"
+          alt="Floating decoration"
+          className="w-40 h-40 md:w-60 md:h-60"
+        />
+      </div>
 
-      {/* Animated Avif Image - Right */}
-     <div className="absolute right-[-3%] top-[28%] animate-bounce-slow">
-  <img
-    src="\shape7.avif"
-    alt="Floating decoration"
-    className="w-40 h-40 md:w-60 md:h-60 opacity-100"
-  />
-</div>
- <div className="absolute right-[-3%] top-[75%] animate-bounce-slow">
-  <img
-    src="\shape6.avif"
-    alt="Floating decoration"
-    className="w-40 h-40 md:w-60 md:h-60 opacity-100"
-  />
-</div>
+      {/* Animated Avif Image - Right - Bottom */}
+      <div className="absolute right-[-3%] top-[75%] animated-image opacity-0">
+        <img
+          src="/shape6.avif"
+          alt="Floating decoration"
+          className="w-40 h-40 md:w-60 md:h-60"
+        />
+      </div>
 
-
-
+      {/* Projects Section */}
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {projects.map((item) => (
           <div
