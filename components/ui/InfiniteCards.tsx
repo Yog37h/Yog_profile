@@ -151,8 +151,8 @@ export const InfiniteMovingCards = ({
                 <div className="mt-6 flex items-center">
                   <img src="/profile.svg" alt="profile" className="me-3" />
                   <div>
-                    <span className="text-xl font-bold text-white">{item.name}</span>
-                    <span className="text-sm text-white-200">{item.title}</span>
+                    <span className="block text-xl font-bold text-white">{item.name}</span>
+                    <span className="block text-sm text-white-200">{item.title}</span>
                   </div>
                 </div>
               </blockquote>
@@ -190,8 +190,8 @@ export const InfiniteMovingCards = ({
                   <div className="mt-6 flex items-center">
                     <img src="/profile.svg" alt="profile" className="me-3" />
                     <div>
-                      <span className="text-xl font-bold text-white">{item.name}</span>
-                      <span className="text-sm text-white-200">{item.title}</span>
+                      <span className="block text-xl font-bold text-white">{item.name}</span>
+                      <span className="block text-sm text-white-200">{item.title}</span>
                     </div>
                   </div>
                 </blockquote>
