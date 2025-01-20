@@ -161,7 +161,14 @@ export const BentoGridItem = ({
 
     </div>
     <div className="icon-container" style={{ animation: "roll-down 15s linear infinite" }}>
-      {[ "nodejs.svg", "nextjs1.svg", "flutter.svg", "angular.svg","nodejs.svg", "nextjs1.svg", "flutter.svg", "angular.svg"].map((img, index) => (
+      {[ "nodejs.svg", 
+      "nextjs1.svg",
+       "flutter.svg",
+        "angular.svg",
+        "nodejs.svg",
+         "nextjs1.svg", 
+         "flutter.svg", 
+         "angular.svg"].map((img, index) => (
         <img
           key={index}
           src={img}

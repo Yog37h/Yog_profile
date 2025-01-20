@@ -1,3 +1,4 @@
+
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
@@ -13,7 +14,7 @@ export const gridItems = [
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "/me1.png",
+    img: "/me1.webp",
     spareImg: "/grid.svg",
   },
   {
@@ -54,7 +55,7 @@ export const gridItems = [
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-50 left-20 bottom-0 md:w-97 w-100",
     titleClassName: "justify-start",
-    img: "fina2.svg",
+    img: "fina2.webp",
     spareImg: "/grid.svg",
   },
   {
