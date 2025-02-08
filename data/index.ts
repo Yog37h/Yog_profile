@@ -30,7 +30,7 @@ export const gridItems = [
   {
     id: 3,
     title: "Tech stack",
-    description: "I desire to accelerate my",
+    description: "Have a stake in my",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-right",
@@ -86,7 +86,7 @@ export const projects = [
     id: 2,
     title: "Yoom - Video Conferencing App",
     des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/trial3.png",
+    img: "/t7.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
     link: "/ui.yoom.com",
   },
@@ -140,16 +140,6 @@ export const testimonials = [
     name: "On the Field, In the Mind",
     title: "Conditioning myself off the track",
   },
-   {
-    quote: [
-      "Published a high value Research Paper in scopus",
-      "Got Patented for an Automated Checkout invention",
-      "Participated in 10+ Nation-wide Hackathons",
-      "Got shortlisted among the Top Entrepreneurs in South India",
-    ],
-    name: "Breaking Boundaries",
-    title: "Some checkpoints in my racing journey",
-  },
   {
     quote: [
       "Rotaract President of the Institution",
@@ -160,33 +150,44 @@ export const testimonials = [
     name: "Leading with Impact",
     title: "List of honoraries along my road",
   },
+   {
+    quote: [
+      "Published a high value Research Paper in scopus",
+      "Got Patented for an Automated Checkout invention",
+      "Participated in 10+ Nation-wide Hackathons",
+      "Got shortlisted among the Top Entrepreneurs in South India",
+    ],
+    name: "Breaking Boundaries",
+    title: "Some checkpoints in my racing journey",
+  },
+  
 ];
 
 export const workExperience = [
   {
     id: 1,
     title: "Cloudstack App Dev Intern - Esilicon Labs",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    desc: "Designed and Developed a full cloud deployed digital health app with highly advanced AI models",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
     title: "Billbot GenAI Intern - SAP Labs India",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+    desc: "Crafted an automated expense approval Slackbot with real time monitoring",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
+    title: "iXP",
     desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp4.svg",
   },
   {
     id: 4,
-    title: "Project Developement Lead",
+    title: "IITDM",
     desc: "Developed and maintained user-facing features using modern frontend technologies.",
     className: "md:col-span-2",
     thumbnail: "/exp3.svg",

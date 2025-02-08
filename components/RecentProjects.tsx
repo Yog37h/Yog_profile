@@ -45,8 +45,8 @@ const RecentProjects = () => {
   return (
     <div ref={sectionRef} className="relative py-20">
       <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-purple">projects</span>
+        A small selection of my{" "}
+        <span className="text-purple">potential projects</span>
       </h1>
 
       {/* Animated Avif Image - Left */}

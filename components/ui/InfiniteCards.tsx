@@ -149,7 +149,7 @@ export const InfiniteMovingCards = ({
                   ))}
                 </ul>
                 <div className="mt-6 flex items-center">
-                  <img src="/profile.svg" alt="profile" className="me-3" />
+                  <img src="/l9.svg" alt="profile" className="me-3" />
                   <div>
                     <span className="block text-xl font-bold text-white">{item.name}</span>
                     <span className="block text-sm text-white-200">{item.title}</span>
@@ -162,44 +162,38 @@ export const InfiniteMovingCards = ({
       )}
 
       {/* Mobile View - Manual Swipe with Fade-In Only and Infinite Loop */}
-      {isMobile && (
-        <div {...handlers} className="relative">
-          <ul
-            className="flex flex-wrap justify-center gap-4 transition-all duration-1000 ease-in-out"
-            style={{ opacity: visible ? 1 : 0 }}
-          >
-            {items.map((item, idx) => (
-              <li
-                key={idx}
-                className={cn(
-                  "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16",
-                  currentIndex === idx ? "block" : "hidden"
-                )}
-                style={{
-                  background: "rgb(4,7,29)",
-                  backgroundColor:
-                    "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-                }}
-              >
-                <blockquote>
-                  <ul className="list-disc pl-5 space-y-2 text-sm md:text-lg text-white font-normal">
-                    {item.quote.map((point, i) => (
-                      <li key={i}>{point}</li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 flex items-center">
-                    <img src="/profile.svg" alt="profile" className="me-3" />
-                    <div>
-                      <span className="block text-xl font-bold text-white">{item.name}</span>
-                      <span className="block text-sm text-white-200">{item.title}</span>
-                    </div>
-                  </div>
-                </blockquote>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
+     {isMobile && (
+  <div {...handlers} className="relative">
+    <ul className="flex flex-wrap justify-center gap-4">
+      {items.map((item, idx) => (
+        <li
+          key={idx}
+          className={cn(
+            "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16 transition-opacity duration-500",
+            currentIndex === idx ? "opacity-100" : "opacity-0 absolute"
+          )}
+          style={{
+            background: "rgb(4,7,29)",
+            backgroundColor:
+              "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+          }}
+        >
+          <blockquote>
+            <ul className="list-disc pl-5 space-y-2 text-sm md:text-lg text-white font-normal">
+              {item.quote.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
+            <div className="mt-6 flex items-center">
+              <img src="/l9.svg" alt="profile" className="me-3" />
+              <div>
+                <span className="block text-xl font-bold text-white">{item.name}</span>
+                <span className="block text-sm text-white-200">{item.title}</span>
+              </div>
+            </div>
+          </blockquote>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}</div>)}
