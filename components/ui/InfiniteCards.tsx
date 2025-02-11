@@ -149,7 +149,7 @@ export const InfiniteMovingCards = ({
                   ))}
                 </ul>
                 <div className="mt-6 flex items-center">
-                  <img src="/l9.svg" alt="profile" className="me-3" />
+                  <img src="/lofi.svg" alt="profile" className="me-3" />
                   <div>
                     <span className="block text-xl font-bold text-white">{item.name}</span>
                     <span className="block text-sm text-white-200">{item.title}</span>
@@ -169,7 +169,7 @@ export const InfiniteMovingCards = ({
         <li
           key={idx}
           className={cn(
-            "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16 transition-opacity duration-500",
+            "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16 transition-opacity duration-1000",
             currentIndex === idx ? "opacity-100" : "opacity-0 absolute"
           )}
           style={{
@@ -185,7 +185,7 @@ export const InfiniteMovingCards = ({
               ))}
             </ul>
             <div className="mt-6 flex items-center">
-              <img src="/l9.svg" alt="profile" className="me-3" />
+              <img src="/lofi.svg" alt="profile" className="me-3" />
               <div>
                 <span className="block text-xl font-bold text-white">{item.name}</span>
                 <span className="block text-sm text-white-200">{item.title}</span>
