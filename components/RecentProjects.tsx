@@ -78,74 +78,74 @@ const RecentProjects = () => {
 
       {/* Projects Section */}
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
-        {projects.map((item) => (
-          <div
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
-            key={item.id}
-          >
+  {projects.map((item) => (
+    <div
+      className="h-[25rem] flex items-center justify-center sm:w-96 w-[80vw] lg:min-h-[32.5rem] max-w-md"
+      key={item.id}
+    >
+      <div onClick={() => handleRedirect(item.link)} className="cursor-pointer">
+        <PinContainer title={item.link}>
+          {/* Image & Background */}
+          <div className="relative flex items-center justify-center sm:w-96 w-[80vw] h-[20vh] lg:h-[30vh] overflow-hidden mb-10 rounded-3xl">
             <div
-              onClick={() => handleRedirect(item.link)}
-              className="cursor-pointer"
+              className="absolute inset-0 w-full h-full rounded-3xl"
+              style={{ backgroundColor: "#0b0e22" }}
             >
-              <PinContainer title={item.link}>
-                <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                  <div
-                    className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                    style={{ backgroundColor: "#0b0e22" }}
-                  >
-                    <img src="/bg.png" alt="bgimg" />
-                  </div>
-                  <img
-                    src={item.img}
-                    alt="cover"
-                    className="z-10 absolute bottom-0"
-                  />
-                </div>
-
-                <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                  {item.title}
-                </h1>
-
-                <p
-                  className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                  style={{
-                    color: "#BEC1DD",
-                    margin: "1vh 0",
-                  }}
-                >
-                  {item.des}
-                </p>
-
-                <div className="flex items-center justify-between mt-7 mb-3">
-                  <div className="flex items-center">
-                    {item.iconLists.map((icon, index) => (
-                      <div
-                        key={index}
-                        className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                        style={{
-                          transform: `translateX(-${5 * index + 2}px)`,
-                        }}
-                      >
-                        <img src={icon} alt="icon" className="p-2" />
-                      </div>
-                    ))}
-                  </div>
-
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex justify-center items-center text-purple"
-                  >
-                    <p className="flex lg:text-xl md:text-xs text-sm">Visit GitHub</p>
-                    <FaLocationArrow className="ms-3" color="#CBACF9" />
-                  </a>
-                </div>
-              </PinContainer>
+              <img src="/bg.png" alt="bgimg" className="object-cover w-full h-full" />
             </div>
+            <img
+              src={item.img}
+              alt="cover"
+              className="z-10 absolute bottom-0 max-w-full h-auto"
+            />
           </div>
-        ))}
+
+          {/* Title */}
+          <h1 className="font-bold text-base md:text-xl lg:text-2xl line-clamp-1 text-center">
+            {item.title}
+          </h1>
+
+          {/* Description */}
+          <p
+            className="text-sm lg:text-xl font-light lg:font-normal line-clamp-2 text-center"
+            style={{ color: "#BEC1DD", margin: "1vh 0" }}
+          >
+            {item.des}
+          </p>
+
+          {/* Tech Icons & GitHub Link */}
+         <div className="flex items-center justify-between mt-7 mb-3">
+  {/* Tech Stack Icons */}
+  <div className="flex items-center">
+    {item.iconLists.map((icon, index) => (
+      <div
+        key={index}
+        className="border border-white/20 rounded-full bg-black w-12 h-12 lg:w-14 lg:h-14 flex justify-center items-center"
+        style={{ transform: `translateX(-${6 * index + 3}px)` }} // Slight adjustment
+      >
+        <img src={icon} alt="icon" className="p-2 w-7 h-7 lg:w-9 lg:h-9" />
       </div>
+    ))}
+  </div>
+
+
+            {/* GitHub Link */}
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex justify-center items-center text-purple"
+            >
+              <p className="text-sm md:text-xs lg:text-xl flex">Visit GitHub</p>
+              <FaLocationArrow className="ms-3 text-purple-400" />
+            </a>
+          </div>
+        </PinContainer>
+      </div>
+    </div>
+  ))}
+</div>
+
     </div>
   );
 };
