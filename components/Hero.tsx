@@ -50,7 +50,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="pb-20 pt-36 relative" ref={sectionRef}>
+    <div className="min-h-screen pb-20 pt-36 relative flex items-center" ref={sectionRef}>
       {/* Spotlights */}
       <div>
         <Spotlight
@@ -66,7 +66,7 @@ const Hero = () => {
 
       {/* Background Grid */}
       <div
-        className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
+        className="absolute inset-0 w-full min-h-screen dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
        absolute top-0 left-0 flex items-center justify-center"
       >
         <div
@@ -89,7 +89,7 @@ const Hero = () => {
           <img
             src="/tol2.avif"
             alt="Additional Top Left"
-            className={`absolute top-[-40px] left-[-40px] w-[30%] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
+            className={`absolute top-[-20px] left-[5%] w-[25%] max-w-[100px] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
             style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(-50%)" }} // Elevation for laptop view
           />
 
@@ -103,7 +103,7 @@ const Hero = () => {
         </div>
 
         {/* Text and Social Links */}
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center md:items-start justify-center mx-auto md:mx-0 md:pl-20">
+        <div className="w-full max-w-3xl px-4 text-center md:text-left flex flex-col items-center md:items-start justify-center mx-auto md:mx-0 md:pl-20">
           <p className="uppercase tracking-widest text-lg text-center text-blue-100 mb-[-10px]">
             Hello, This is me
           </p>
@@ -163,7 +163,8 @@ const Hero = () => {
           </div>
 
           {/* AVIF Images for Mobile */}
-          <div className="mt-12 md:hidden flex justify-center items-center relative"> {/* Adjusted margin for spacing */}
+          <div className="mt-12 md:hidden flex flex-col items-center space-y-4">
+ {/* Adjusted margin for spacing */}
             {/* Centered main image */}
             <img
               src="/tol1.avif"
