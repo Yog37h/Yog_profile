@@ -43,101 +43,61 @@ const RecentProjects = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative py-20">
-      <h1 className="heading">
-        A small selection of my{" "}
-        <span className="text-purple">potential projects</span>
+    <div ref={sectionRef} className="relative py-20 px-6 md:px-12">
+      <h1 className="heading text-center">
+        A small selection of my <span className="text-purple">potential projects</span>
       </h1>
 
-      {/* Animated Avif Image - Left */}
-      <div className="absolute left-[-3%] top-1/2 animated-image opacity-0">
-        <img
-          src="/shape5.avif"
-          alt="Floating decoration"
-          className="w-40 h-40 md:w-60 md:h-60"
-        />
-      </div>
-
-      {/* Animated Avif Image - Right - Top */}
-      <div className="absolute right-[-3%] top-[28%] animated-image opacity-0">
-        <img
-          src="/shape7.avif"
-          alt="Floating decoration"
-          className="w-40 h-40 md:w-60 md:h-60"
-        />
-      </div>
-
-      {/* Animated Avif Image - Right - Bottom */}
-      <div className="absolute right-[-3%] top-[75%] animated-image opacity-0">
-        <img
-          src="/shape6.avif"
-          alt="Floating decoration"
-          className="w-40 h-40 md:w-60 md:h-60"
-        />
-      </div>
-
-      {/* Projects Section */}
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10 place-items-center">
   {projects.map((item) => (
     <div
-      className="h-[25rem] flex items-center justify-center sm:w-96 w-[80vw] lg:min-h-[32.5rem] max-w-md"
       key={item.id}
+      className="w-full max-w-[1000px] h-[430px] flex flex-col items-center bg-[#0b0e22] p-8 rounded-2xl shadow-lg"
     >
-      <div onClick={() => handleRedirect(item.link)} className="cursor-pointer">
+      <div onClick={() => handleRedirect(item.link)} className="cursor-pointer w-full">
         <PinContainer title={item.link}>
-          {/* Image & Background */}
-          <div className="relative flex items-center justify-center sm:w-96 w-[80vw] h-[20vh] lg:h-[30vh] overflow-hidden mb-10 rounded-3xl">
-            <div
-              className="absolute inset-0 w-full h-full rounded-3xl"
-              style={{ backgroundColor: "#0b0e22" }}
-            >
-              <img src="/bg.png" alt="bgimg" className="object-cover w-full h-full" />
-            </div>
+          <div className="relative w-[500px] h-[180px] overflow-hidden rounded-2xl mb-6">
+            <img
+              src="/bg.png"
+              alt="bgimg"
+              className="absolute inset-0 w-full h-full object-cover opacity-100"
+            />
             <img
               src={item.img}
               alt="cover"
-              className="z-10 absolute bottom-0 max-w-full h-auto"
+             className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
 
-          {/* Title */}
-          <h1 className="font-bold text-base md:text-xl lg:text-2xl line-clamp-1 text-center">
+          <h1 className="font-bold text-lg md:text-xl line-clamp-1 text-white">
             {item.title}
           </h1>
 
-          {/* Description */}
-          <p
-            className="text-sm lg:text-xl font-light lg:font-normal line-clamp-2 text-center"
-            style={{ color: "#BEC1DD", margin: "1vh 0" }}
-          >
+          <p className="text-sm md:text-base text-gray-400 mt-2 line-clamp-2">
             {item.des}
           </p>
 
-          {/* Tech Icons & GitHub Link */}
-         <div className="flex items-center justify-between mt-7 mb-3">
-  {/* Tech Stack Icons */}
-  <div className="flex items-center">
-    {item.iconLists.map((icon, index) => (
-      <div
-        key={index}
-        className="border border-white/20 rounded-full bg-black w-12 h-12 lg:w-14 lg:h-14 flex justify-center items-center"
-        style={{ transform: `translateX(-${6 * index + 3}px)` }} // Slight adjustment
-      >
-        <img src={icon} alt="icon" className="p-2 w-7 h-7 lg:w-9 lg:h-9" />
-      </div>
-    ))}
-  </div>
+          <div className="flex items-center justify-between mt-5 w-full">
+            <div className="flex space-x-3">
+              {item.iconLists.map((icon, index) => (
+                <div
+                  key={index}
+                  className="border border-white/[.2] rounded-full bg-black w-12 h-12 flex justify-center items-center"
+                >
+                  <img src={icon} alt="icon" className="p-3" />
+                </div>
+              ))}
+            </div>
 
-
-            {/* GitHub Link */}
             <a
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center text-purple"
+              className="flex items-center text-purple text-sm md:text-base"
             >
-              <p className="text-sm md:text-xs lg:text-xl flex">Visit GitHub</p>
-              <FaLocationArrow className="ms-3 text-purple-400" />
+              Visit GitHub
+              <FaLocationArrow className="ml-2 text-lg" color="#CBACF9" />
             </a>
           </div>
         </PinContainer>
@@ -145,7 +105,8 @@ const RecentProjects = () => {
     </div>
   ))}
 </div>
-
+       
+      
     </div>
   );
 };
