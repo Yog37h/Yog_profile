@@ -1,7 +1,8 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaLocationArrow } from "react-icons/fa6";
-
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextCycling } from "./ui/TextCycling";
@@ -9,22 +10,12 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const Hero = () => {
   const [inView, setInView] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const aboutSectionRef = useRef<HTMLDivElement>(null);
 
-  const scrollToSection = (id: string) => {
-    const section = document.querySelector(id);
-    if (section) {
-      const navbarHeight =
-        document.getElementById("floating-nav")?.offsetHeight || 0;
-      const offsetPosition =
-        section.getBoundingClientRect().top +
-        window.pageYOffset -
-        navbarHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -34,7 +25,7 @@ const Hero = () => {
         setInView(entry.isIntersecting);
       },
       {
-        threshold: 0.5, // Trigger when 50% of the section is visible
+        threshold: 0.5,
       }
     );
 
@@ -76,7 +67,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
+      <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between w-full">
         {/* Main AVIF Image for Laptop */}
         <div className="hidden md:block relative w-1/2 lg:w-1/2 animate-bounce-slow">
           <img
@@ -84,33 +75,29 @@ const Hero = () => {
             alt="Yogeshwaran"
             className={`rounded-full object-cover w-full lg:w-[150%] transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
           />
-
-          {/* Top-Left Image */}
           <img
             src="/tol2.avif"
             alt="Additional Top Left"
             className={`absolute top-[-20px] left-[5%] w-[25%] max-w-[100px] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
-            style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(-50%)" }} // Elevation for laptop view
+            style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(-50%)" }}
           />
-
-          {/* Bottom-Right Image */}
           <img
             src="/tol3.avif"
             alt="Additional Bottom Right"
             className={`absolute bottom-[-40px] right-[-40px] w-[30%] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : 'translate-x-full'}`}
-            style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(50%)" }} // Elevation for laptop view
+            style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(50%)" }}
           />
         </div>
 
         {/* Text and Social Links */}
         <div className="w-full max-w-3xl px-4 text-center md:text-left flex flex-col items-center md:items-start justify-center mx-auto md:mx-0 md:pl-20">
-          <p className="uppercase tracking-widest text-lg text-center text-blue-100 mb-[-10px]">
+          <p className="uppercase tracking-widest text-lg text-center md:text-left text-blue-100 mb-[-10px]">
             Hello, This is me
           </p>
 
           <TextGenerateEffect
             words="YOGESHWARAN"
-            className="text-center md:text-left text-[40px] md:text-5xl lg:text-6xl"
+            className="text-center md:text-left text-[40px] md:text-5xl lg:text-6xl transition-all duration-300 hover:text-purple hover:[text-shadow:0_0_10px_rgba(203,172,249,0.8),0_0_20px_rgba(203,172,249,0.6),0_0_30px_rgba(203,172,249,0.4)]"
           />
           <TextCycling
             words="Software Engineer, Player, Developer, Tech Enthusiast"
@@ -121,9 +108,9 @@ const Hero = () => {
             A Tech-savvy Professional with deep love for Technology and
             Problem-solving with Business Ideologies
           </p>
-          <h1 className="heading mt-[20px]">
-            Connect with
-            <span className="text-purple"> Me </span>
+
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white md:text-left text-center mt-4">
+            Connect with <span className="text-purple">Me</span>
           </h1>
 
           {/* Social Media Icons */}
@@ -163,21 +150,17 @@ const Hero = () => {
           </div>
 
           {/* AVIF Images for Mobile */}
-          <div className="mt-12 md:hidden flex flex-col items-center space-y-4">
- {/* Adjusted margin for spacing */}
-            {/* Centered main image */}
+          <div className="mt-12 md:hidden flex flex-col items-center space-y-4 relative">
             <img
               src="/tol1.avif"
               alt="Yogeshwaran"
               className={`w-32 h-32 rounded-full object-cover shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
             />
-            {/* Top-Left image with adjusted positioning */}
             <img
               src="/tol2.avif"
               alt="Additional Top Left"
-              className={`absolute top-[-20px] left-[-40px] w-16 rounded-full shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}  
+              className={`absolute top-[-20px] left-[-40px] w-16 rounded-full shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
             />
-            {/* Bottom-Right image */}
             <img
               src="/tol3.avif"
               alt="Additional Bottom Right"
@@ -186,12 +169,12 @@ const Hero = () => {
           </div>
 
           {/* Magic Button */}
+          <div ref={aboutSectionRef} id="about" className="hidden" />
           <a
-            href="#about"
             className="block mt-12 md:mt-12"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection("#about");
+              scrollToSection(aboutSectionRef);
             }}
           >
             <MagicButton
