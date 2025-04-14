@@ -269,7 +269,7 @@ const Footer = () => {
           </div>
           <a href="mailto:kiyogesh80@gmail.com" className="mt-6">
             <MagicButton
-              title="Let\'s get in touch" // Escaped apostrophe with backslash
+              title="Let&#39;s get in touch" // Used HTML entity for apostrophe
               icon={<FaLocationArrow />}
               position="right"
               otherClasses="mx-auto"
