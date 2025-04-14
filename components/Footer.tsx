@@ -1,60 +1,21 @@
 "use client";
 
-import Image from "next/image"; // Import Image component
+import {
+  TextRevealCard,
+  TextRevealCardDescription,
+  TextRevealCardTitle,
+} from "@/components/ui/text-reveal-card";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import MagicButton from "./MagicButton";
 
 const styles = `
-  .heading-container {
-    perspective: 1000px;
-    overflow: visible;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .word-wrapper {
-    display: inline-flex;
-    transform-style: preserve-3d;
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
-    padding: 0 0.25rem;
-    white-space: nowrap;
-  }
-
-  .word-hidden {
-    transform: rotateX(-90deg);
-    opacity: 0;
-  }
-
-  .word-visible {
-    transform: rotateX(0deg);
-    opacity: 1;
-  }
-
-  .highlight-word {
-    color: #CBACF9;
-    font-weight: 800;
-    text-shadow: 0 0 8px rgba(203, 172, 249, 0.3);
-  }
-
-  .heading {
-    line-height: 1.3;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-  }
-
   .svg-container {
     position: relative;
     width: 100%;
     max-width: 100%;
-    margin: 0;
+    margin: 0 auto;
     transform-style: preserve-3d;
     perspective: 1000px;
     flex: 1;
@@ -94,9 +55,66 @@ const styles = `
     flex: 1;
   }
 
+  .heading-container {
+    perspective: 1000px;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .word-wrapper {
+    display: inline-flex;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    padding: 0 0.25rem;
+    white-space: nowrap;
+  }
+
+  .word-hidden {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+
+  .word-visible {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+
+  .highlight-word {
+    color: #CBACF9;
+    font-weight: 800;
+    text-shadow: 0 0 8px rgba(203, 172, 249, 0.3);
+  }
+
+  .heading {
+    line-height: 1.3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+  }
+
   @media (max-width: 640px) {
+    .svg-container {
+      max-width: 70%;
+      margin: 1rem auto;
+      position: relative;
+      bottom: 0;
+    }
+    .svg-image {
+      width: 100%;
+      max-width: 300px;
+    }
     .heading {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
     .word-wrapper {
       padding: 0 0.15rem;
@@ -105,72 +123,46 @@ const styles = `
     .heading-container {
       padding: 0 0.5rem;
     }
-    .svg-container {
-      max-width: 80%; /* Smaller SVG for mobile */
-      margin: 2rem auto 0; /* Center horizontally, add top margin */
-      position: relative;
-      bottom: 0;
-    }
-    .svg-image {
-      width: 100%;
-    }
   }
 
   @media (min-width: 641px) and (max-width: 1024px) {
+    .svg-container {
+      max-width: 100%;
+    }
     .heading {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
     .word-wrapper {
       padding: 0 0.2rem;
     }
-    .svg-container {
-      max-width: 100%;
-    }
   }
 
   @media (min-width: 1025px) {
+    .svg-container {
+      max-width: 100%;
+    }
     .heading {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
     .word-wrapper {
       padding: 0 0.25rem;
-    }
-    .svg-container {
-      max-width: 100%;
     }
   }
 `;
 
 const Footer = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const tiltRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<HTMLImageElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
 
-  // Handle heading and SVG animation
   useEffect(() => {
     const section = sectionRef.current;
     const svg = svgRef.current;
     if (!section || !svg) return;
 
-    const words = section.querySelectorAll<HTMLDivElement>(".word-wrapper");
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        words.forEach((word, index) => {
-          const wordDelay = index * 200;
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              word.classList.remove("word-hidden");
-              word.classList.add("word-visible");
-            }, wordDelay);
-          } else {
-            setTimeout(() => {
-              word.classList.remove("word-visible");
-              word.classList.add("word-hidden");
-            }, wordDelay);
-          }
-        });
-
         if (entry.isIntersecting) {
           setTimeout(() => {
             svg.classList.add("svg-image-visible");
@@ -186,46 +178,48 @@ const Footer = () => {
     );
 
     observer.observe(section);
-
-    words.forEach((word) => word.classList.add("word-hidden"));
     svg.classList.remove("svg-image-visible");
 
     return () => observer.disconnect();
   }, []);
 
-  // Handle tilt effect
   useEffect(() => {
-    const tiltElement = tiltRef.current;
-    if (!tiltElement) return;
+    const headingSection = headingRef.current;
+    if (!headingSection) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = tiltElement.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
+    const words = headingSection.querySelectorAll<HTMLDivElement>(".word-wrapper");
 
-      const mouseX = e.clientX - centerX;
-      const mouseY = e.clientY - centerY;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        words.forEach((word, index) => {
+          const delay = index * 200;
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              word.classList.remove("word-hidden");
+              word.classList.add("word-visible");
+            }, delay);
+          } else {
+            setTimeout(() => {
+              word.classList.remove("word-visible");
+              word.classList.add("word-hidden");
+            }, delay);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px",
+      }
+    );
 
-      const rotateX = -(mouseY / rect.height) * 25;
-      const rotateY = (mouseX / rect.width) * 25;
+    observer.observe(headingSection);
+    words.forEach((word) => word.classList.add("word-hidden"));
 
-      tiltElement.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    };
-
-    const handleMouseLeave = () => {
-      tiltElement.style.transform = `rotateX(0deg) rotateY(0deg)`;
-    };
-
-    tiltElement.addEventListener("mousemove", handleMouseMove);
-    tiltElement.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      tiltElement.removeEventListener("mousemove", handleMouseMove);
-      tiltElement.removeEventListener("mouseleave", handleMouseLeave);
-    };
+    return () => observer.disconnect();
   }, []);
 
-  const headingText = "Crazy to take our digital convo to the next level?".split(" ");
+  const headingText = "Crazy to take our Digital Convo next level".split(" ");
+  const highlightWords = ["Digital", "Convo"];
 
   return (
     <footer
@@ -238,21 +232,21 @@ const Footer = () => {
         <Image
           src="/footer-grid.svg"
           alt="grid"
-          width={1920} // Adjust based on actual image size
-          height={1080} // Adjust based on actual image size
+          width={1920}
+          height={1080}
           className="w-full h-full opacity-50"
         />
       </div>
 
-      <div className="flex flex-col md:flex-row w-full justify-between items-center h-full">
-        <div className="flex flex-col items-center md:items-start w-full md:w-1/2 px-4 md:px-10">
-          <div className="heading-container">
-            <h1 className="heading font-bold mb-4 text-white">
+      <div className="flex flex-col md:flex-row w-full justify-center md:justify-between items-center h-full px-4 sm:px-10">
+        <div className="flex flex-col items-center w-full md:w-1/2 mb-10 md:mb-0 text-center">
+          <div ref={headingRef} className="heading-container">
+            <h1 className="heading font-bold mb-4">
               {headingText.map((word, index) => (
                 <span
                   key={index}
                   className={`word-wrapper ${
-                    word === "our" ? "highlight-word" : ""
+                    highlightWords.includes(word) ? "highlight-word" : ""
                   }`}
                 >
                   {word}
@@ -260,27 +254,38 @@ const Footer = () => {
               ))}
             </h1>
           </div>
-          <p className="text-white-200 my-4 text-center md:text-left text-xl">
-            Reach out to me today and let&apos;s get connected.
-          </p>
-          <a href="mailto:kiyogesh80@gmail.com">
+          <div className="w-full max-w-[90vw] sm:max-w-[40rem] mx-auto">
+            <TextRevealCard
+              text="Reach out today"
+              revealText="Lets get connected"
+            >
+              <TextRevealCardTitle>
+                Sometimes, it's better to Hover
+              </TextRevealCardTitle>
+              <TextRevealCardDescription>
+                To keep Networking
+              </TextRevealCardDescription>
+            </TextRevealCard>
+          </div>
+          <a href="mailto:kiyogesh80@gmail.com" className="mt-6">
             <MagicButton
               title="Let's get in touch"
               icon={<FaLocationArrow />}
               position="right"
+              otherClasses="mx-auto"
             />
           </a>
         </div>
 
-        <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
+        <div className="w-full md:w-1/2 flex justify-center">
           <div ref={tiltRef} className="tilt-wrapper">
             <div className="svg-container">
               <Image
                 ref={svgRef}
                 src="/astra3.svg"
                 alt="Astra SVG"
-                width={500} // Adjust based on actual image size
-                height={500} // Adjust based on actual image size
+                width={500}
+                height={500}
                 className="svg-image"
               />
             </div>
