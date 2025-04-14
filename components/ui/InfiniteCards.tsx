@@ -1,6 +1,7 @@
-"use client"; // Add this if using Next.js for client-side rendering
+"use client";
 
-import { cn } from "@/lib/utils"; // Ensure this path matches your project structure
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
@@ -12,7 +13,7 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
-    quote: string[]; // Updated to array of strings
+    quote: string[];
     name: string;
     title: string;
   }[];
@@ -25,34 +26,13 @@ export const InfiniteMovingCards = ({
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
   const [start, setStart] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0); // Track the current card index
-  const [visible, setVisible] = useState(true); // Track visibility of card for fade-in effect
-  const [isMobile, setIsMobile] = useState(false); // Dynamically track if the user is on mobile
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const swipeRef = useRef(null);
 
-  useEffect(() => {
-    // Check if running in a browser environment
-    const checkIsMobile = () => {
-      if (typeof window !== "undefined") {
-        setIsMobile(window.innerWidth <= 768);
-      }
-    };
-
-    checkIsMobile(); // Initial check
-    window.addEventListener("resize", checkIsMobile); // Listen for resize events
-
-    return () => {
-      window.removeEventListener("resize", checkIsMobile); // Cleanup event listener
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isMobile) {
-      addAnimation();
-    }
-  }, [isMobile]);
-
+  // Move addAnimation declaration before useEffect
   const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
@@ -69,6 +49,27 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   };
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth <= 768);
+      }
+    };
+
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      addAnimation();
+    }
+  }, [isMobile, addAnimation]);
 
   const getDirection = () => {
     if (containerRef.current) {
@@ -89,15 +90,14 @@ export const InfiniteMovingCards = ({
 
   const handleSwipeLeft = () => {
     setCurrentIndex((prevIndex) => (prevIndex === items.length - 1 ? 0 : prevIndex + 1));
-    setVisible(false); // Set visibility to false to trigger fade-in
+    setVisible(false);
   };
 
   const handleSwipeRight = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
-    setVisible(false); // Set visibility to false to trigger fade-in
+    setVisible(false);
   };
 
-  // Handling swipeable events using react-swipeable
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
@@ -107,10 +107,10 @@ export const InfiniteMovingCards = ({
   useEffect(() => {
     if (!visible) {
       const timer = setTimeout(() => {
-        setVisible(true); // Set visibility back to true after fade-out
-      }, 500); // Time duration for the fade-out effect
+        setVisible(true);
+      }, 500);
 
-      return () => clearTimeout(timer); // Cleanup on component unmount
+      return () => clearTimeout(timer);
     }
   }, [visible]);
 
@@ -149,7 +149,13 @@ export const InfiniteMovingCards = ({
                   ))}
                 </ul>
                 <div className="mt-6 flex items-center">
-                  <img src="/lofi.svg" alt="profile" className="me-3" />
+                  <Image
+                    src="/lofi.svg"
+                    alt="Profile Image"
+                    width={40}
+                    height={40}
+                    className="me-3"
+                  />
                   <div>
                     <span className="block text-xl font-bold text-white">{item.name}</span>
                     <span className="block text-sm text-white-200">{item.title}</span>
@@ -162,38 +168,47 @@ export const InfiniteMovingCards = ({
       )}
 
       {/* Mobile View - Manual Swipe with Fade-In Only and Infinite Loop */}
-     {isMobile && (
-  <div {...handlers} className="relative">
-    <ul className="flex flex-wrap justify-center gap-4">
-      {items.map((item, idx) => (
-        <li
-          key={idx}
-          className={cn(
-            "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16 transition-opacity duration-1000",
-            currentIndex === idx ? "opacity-100" : "opacity-0 absolute"
-          )}
-          style={{
-            background: "rgb(4,7,29)",
-            backgroundColor:
-              "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-          }}
-        >
-          <blockquote>
-            <ul className="list-disc pl-5 space-y-2 text-sm md:text-lg text-white font-normal">
-              {item.quote.map((point, i) => (
-                <li key={i}>{point}</li>
-              ))}
-            </ul>
-            <div className="mt-6 flex items-center">
-              <img src="/lofi.svg" alt="profile" className="me-3" />
-              <div>
-                <span className="block text-xl font-bold text-white">{item.name}</span>
-                <span className="block text-sm text-white-200">{item.title}</span>
-              </div>
-            </div>
-          </blockquote>
-        </li>
-      ))}
-    </ul>
-  </div>
-)}</div>)}
+      {isMobile && (
+        <div {...handlers} className="relative">
+          <ul className="flex flex-wrap justify-center gap-4">
+            {items.map((item, idx) => (
+              <li
+                key={idx}
+                className={cn(
+                  "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16 transition-opacity duration-1000",
+                  currentIndex === idx ? "opacity-100" : "opacity-0 absolute"
+                )}
+                style={{
+                  background: "rgb(4,7,29)",
+                  backgroundColor:
+                    "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+                }}
+              >
+                <blockquote>
+                  <ul className="list-disc pl-5 space-y-2 text-sm md:text-lg text-white font-normal">
+                    {item.quote.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 flex items-center">
+                    <Image
+                      src="/lofi.svg"
+                      alt="Profile Image"
+                      width={40}
+                      height={40}
+                      className="me-3"
+                    />
+                    <div>
+                      <span className="block text-xl font-bold text-white">{item.name}</span>
+                      <span className="block text-sm text-white-200">{item.title}</span>
+                    </div>
+                  </div>
+                </blockquote>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};

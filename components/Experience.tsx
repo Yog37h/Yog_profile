@@ -1,6 +1,7 @@
 "use client";
 
 import { workExperience } from "@/data";
+import Image from "next/image"; // Import Image component
 import { useEffect, useRef } from "react";
 import { Button } from "./ui/MovingBorders";
 
@@ -133,10 +134,12 @@ const Experience = () => {
           style={{ lineHeight: "10" }}
         >
           Swipe to view
-          <img
+          <Image
             src="/hi.svg"
             alt="hi"
-            className="inline-block w-6 h-6 ml-2 align-text-top"
+            width={24} // Matches w-6 (6rem * 4 = 24px)
+            height={24} // Matches h-6
+            className="inline-block ml-2 align-text-top"
             style={{ position: "relative", top: "0px" }}
           />
         </p>
@@ -159,7 +162,7 @@ const Experience = () => {
       </div>
 
       {/* Cards section */}
-      <div className="w-full mt-4 grid lg:grid-cols-4 grid-cols-1 gap-10"> {/* Reduced from mt-12 to mt-4 */}
+      <div className="w-full mt-4 grid lg:grid-cols-4 grid-cols-1 gap-10">
         {workExperience.map((card) => (
           <Button
             key={card.id}
@@ -174,9 +177,11 @@ const Experience = () => {
             className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"
           >
             <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
-              <img
+              <Image
                 src={card.thumbnail}
-                alt={card.thumbnail}
+                alt={card.title} // Use title for better accessibility
+                width={128} // Matches lg:w-32 (32rem * 4 = 128px)
+                height={128} // Square aspect ratio for thumbnails
                 className="lg:w-32 md:w-20 w-16"
               />
               <div className="lg:ms-5">

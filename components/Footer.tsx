@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"; // Import Image component
 import { useEffect, useRef } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import MagicButton from "./MagicButton";
@@ -234,9 +235,11 @@ const Footer = () => {
     >
       <style>{styles}</style>
       <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <img
+        <Image
           src="/footer-grid.svg"
           alt="grid"
+          width={1920} // Adjust based on actual image size
+          height={1080} // Adjust based on actual image size
           className="w-full h-full opacity-50"
         />
       </div>
@@ -258,7 +261,7 @@ const Footer = () => {
             </h1>
           </div>
           <p className="text-white-200 my-4 text-center md:text-left text-xl">
-            Reach out to me today and let's get connected.
+            Reach out to me today and let&apos;s get connected.
           </p>
           <a href="mailto:kiyogesh80@gmail.com">
             <MagicButton
@@ -272,10 +275,12 @@ const Footer = () => {
         <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
           <div ref={tiltRef} className="tilt-wrapper">
             <div className="svg-container">
-              <img
+              <Image
                 ref={svgRef}
                 src="/astra3.svg"
                 alt="Astra SVG"
+                width={500} // Adjust based on actual image size
+                height={500} // Adjust based on actual image size
                 className="svg-image"
               />
             </div>

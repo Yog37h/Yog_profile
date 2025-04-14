@@ -94,7 +94,7 @@ const Approach = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         words.forEach((word, index) => {
-          const delay = index * 200; // 200ms stagger
+          const delay = index * 200;
           if (entry.isIntersecting) {
             setTimeout(() => {
               word.classList.remove("word-hidden");
@@ -140,7 +140,7 @@ const Approach = () => {
           ))}
         </h1>
       </div>
-      <div className="my-4 flex flex-col lg:flex-row items-center justify-center w-full gap-4"> {/* Reduced from my-20 to my-4 */}
+      <div className="my-4 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         <Card
           title="Planning & Strategy"
           icon={<AceternityIcon order="Phase 1" />}

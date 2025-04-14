@@ -81,11 +81,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   quantity = 100,
   staticity = 50,
   ease = 50,
-  size = 0.4, // Reverted back to original size (was 2)
+  size = 0.4,
   refresh = false,
   color = "#ffffff",
-  vx = 0.1, // Kept the slight rightward drift
-  vy = 0.1, // Kept the slight downward drift
+  vx = 0.1,
+  vy = 0.1,
   ...props
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -98,43 +98,6 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
   const rafID = useRef<number | null>(null);
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      context.current = canvasRef.current.getContext("2d");
-    }
-    initCanvas();
-    animate();
-
-    const handleResize = () => {
-      if (resizeTimeout.current) {
-        clearTimeout(resizeTimeout.current);
-      }
-      resizeTimeout.current = setTimeout(() => {
-        initCanvas();
-      }, 200);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      if (rafID.current != null) {
-        window.cancelAnimationFrame(rafID.current);
-      }
-      if (resizeTimeout.current) {
-        clearTimeout(resizeTimeout.current);
-      }
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [color]);
-
-  useEffect(() => {
-    onMouseMove();
-  }, [mousePosition.x, mousePosition.y]);
-
-  useEffect(() => {
-    initCanvas();
-  }, [refresh]);
 
   const initCanvas = () => {
     resizeCanvas();
@@ -166,7 +129,6 @@ export const Particles: React.FC<ParticlesProps> = ({
       canvasRef.current.style.height = `${canvasSize.current.h}px`;
       context.current.scale(dpr, dpr);
 
-      // Clear existing particles and create new ones with exact quantity
       circles.current = [];
       for (let i = 0; i < quantity; i++) {
         const circle = circleParams();
@@ -180,11 +142,11 @@ export const Particles: React.FC<ParticlesProps> = ({
     const y = Math.floor(Math.random() * canvasSize.current.h);
     const translateX = 0;
     const translateY = 0;
-    const pSize = Math.floor(Math.random() * 2) + size; // Reverted back to original range (was * 4)
+    const pSize = Math.floor(Math.random() * 2) + size;
     const alpha = 0;
     const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
-    const dx = (Math.random() - 0.5) * 0.5; // Kept the increased speed
-    const dy = (Math.random() - 0.5) * 0.5; // Kept the increased speed
+    const dx = (Math.random() - 0.5) * 0.5;
+    const dy = (Math.random() - 0.5) * 0.5;
     const magnetism = 0.1 + Math.random() * 4;
     return {
       x,
@@ -253,12 +215,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   const animate = () => {
     clearContext();
     circles.current.forEach((circle: Circle, i: number) => {
-      // Handle the alpha value
       const edge = [
-        circle.x + circle.translateX - circle.size, // distance from left edge
-        canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-        circle.y + circle.translateY - circle.size, // distance from top edge
-        canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
+        circle.x + circle.translateX - circle.size,
+        canvasSize.current.w - circle.x - circle.translateX - circle.size,
+        circle.y + circle.translateY - circle.size,
+        canvasSize.current.h - circle.y - circle.translateY - circle.size,
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
       const remapClosestEdge = parseFloat(
@@ -283,22 +244,56 @@ export const Particles: React.FC<ParticlesProps> = ({
 
       drawCircle(circle, true);
 
-      // circle gets out of the canvas
       if (
         circle.x < -circle.size ||
         circle.x > canvasSize.current.w + circle.size ||
         circle.y < -circle.size ||
         circle.y > canvasSize.current.h + circle.size
       ) {
-        // remove the circle from the array
         circles.current.splice(i, 1);
-        // create a new circle
         const newCircle = circleParams();
         drawCircle(newCircle);
       }
     });
     rafID.current = window.requestAnimationFrame(animate);
   };
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      context.current = canvasRef.current.getContext("2d");
+    }
+    initCanvas();
+    animate();
+
+    const handleResize = () => {
+      if (resizeTimeout.current) {
+        clearTimeout(resizeTimeout.current);
+      }
+      resizeTimeout.current = setTimeout(() => {
+        initCanvas();
+      }, 200);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      if (rafID.current != null) {
+        window.cancelAnimationFrame(rafID.current);
+      }
+      if (resizeTimeout.current) {
+        clearTimeout(resizeTimeout.current);
+      }
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [color, initCanvas, animate]); // Added initCanvas, animate
+
+  useEffect(() => {
+    onMouseMove();
+  }, [mousePosition.x, mousePosition.y, onMouseMove]); // Added onMouseMove
+
+  useEffect(() => {
+    initCanvas();
+  }, [refresh, initCanvas]); // Added initCanvas
 
   return (
     <div

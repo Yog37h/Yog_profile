@@ -1,5 +1,6 @@
 import animationData from "@/data/confetti.json";
 import { cn } from "@/lib/utils";
+import Image from "next/image"; // Import Image component
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import Lottie from "react-lottie";
@@ -73,7 +74,7 @@ export const BentoGridItem = ({
     },
   };
 
-   const driveLink = "https://drive.google.com/file/d/1xjMViu9CyKkF2K_gG-sOoFU166vY2VVh/view?usp=sharing"; // <-- Your Google Drive link here
+  const driveLink = "https://drive.google.com/file/d/1xjMViu9CyKkF2K_gG-sOoFU166vY2VVh/view?usp=sharing";
 
   const handleClick = () => {
     setCopied(true);
@@ -104,9 +105,11 @@ export const BentoGridItem = ({
       >
         <div className="absolute inset-0 w-full h-full z-0">
           {img && (
-            <img
+            <Image
               src={img}
               alt={title as string}
+              width={400} // Estimated for bento grid item
+              height={300} // Estimated aspect ratio
               className={cn(
                 imgClassName,
                 "object-cover object-center w-full h-full transform group-hover/bento:scale-110 transition-transform duration-500"
@@ -114,24 +117,25 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-        <div  
-  className={`absolute right-15 -bottom-5 ${
-    id === 5 && "w-full opacity-100"
-  }`}
->
-  {spareImg && (
-  <img
-    src={spareImg}
-    alt="Spare Image"
-    className={`object-cover object-center ${
-      id === 5
-        ? "w-full h-full top-0 bottom-0 right-0 left-0"  // Make image take full width and height, position at the top
-        : "w-40 h-40 right-30 left-50"
-    }`}
-  />
-)}
-
-</div>
+        <div
+          className={`absolute right-15 -bottom-5 ${
+            id === 5 && "w-full opacity-100"
+          }`}
+        >
+          {spareImg && (
+            <Image
+              src={spareImg}
+              alt="Spare Image"
+              width={id === 5 ? 400 : 160} // Full width for id=5, else w-40
+              height={id === 5 ? 300 : 160} // Match height
+              className={`object-cover object-center ${
+                id === 5
+                  ? "w-full h-full top-0 bottom-0 right-0 left-0"
+                  : "w-40 h-40 right-30 left-50"
+              }`}
+            />
+          )}
+        </div>
 
         {id === 6 && (
           <BackgroundGradientAnimation>
@@ -139,89 +143,93 @@ export const BentoGridItem = ({
           </BackgroundGradientAnimation>
         )}
 
-       <div
-  className={cn(
-    titleClassName,
-    "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10 z-10"
-  )}
->
-  <div className="font-sans font-extralight md:max-w-20 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
-    {description}
-  </div>
-  <div
-    className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10 ${id === 2 ? "animate-glowing" : ""}`}
-  >
-    {title}
-  </div>
+        <div
+          className={cn(
+            titleClassName,
+            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10 z-10"
+          )}
+        >
+          <div className="font-sans font-extralight md:max-w-20 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
+            {description}
+          </div>
+          <div
+            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10 ${id === 2 ? "animate-glowing" : ""}`}
+          >
+            {title}
+          </div>
 
-  {id === 2 && <GridGlobe />}
-{id === 3 && (
-  <div className="flex gap-1 lg:gap-5 w-auto absolute left-55 right-3 lg:left-60">
-    <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 overflow-hidden h-10 lg:h-140 w-35">
-
-    </div>
-    <div className="icon-container" style={{ animation: "roll-down 15s linear infinite" }}>
-      {[ "nodejs.svg", 
-      "nextjs1.svg",
-       "flutter.svg",
-        "angular.svg",
-        "nodejs.svg",
-         "nextjs1.svg", 
-         "flutter.svg", 
-         "angular.svg"].map((img, index) => (
-        <img
-          key={index}
-          src={img}
-          alt={`Technology ${index}`}
-          className="icon"
-        />
-      ))}
-    </div>
-  </div>
-)}
-{id === 4 && (
-  <div className="flex justify-center items-center w-full p-4">
-    <div className="flex flex-wrap gap-6 justify-center">
-      {[
-        "python.svg",  
-        "java.svg",
-        "c.svg",
-        "typescript.svg",
-        "javascript.svg",
-        "mysqlfis.svg",
-        "git.svg",
-        "docker.svg",
-        "figma.svg",
-        "app.svg",
-        "twilio1.svg"
-      ].map((img, index) => (
-        <img
-          key={index}
-          src={img}
-          alt={`Technology ${index}`}
-          className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
-        />
-      ))}
-    </div>
-  </div>
-)}
+          {id === 2 && <GridGlobe />}
+          {id === 3 && (
+            <div className="flex gap-1 lg:gap-5 w-auto absolute left-55 right-3 lg:left-60">
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 overflow-hidden h-10 lg:h-140 w-35"></div>
+              <div className="icon-container" style={{ animation: "roll-down 15s linear infinite" }}>
+                {[
+                  "nodejs.svg",
+                  "nextjs1.svg",
+                  "flutter.svg",
+                  "angular.svg",
+                  "nodejs.svg",
+                  "nextjs1.svg",
+                  "flutter.svg",
+                  "angular.svg",
+                ].map((img, index) => (
+                  <Image
+                    key={index}
+                    src={img}
+                    alt={`Technology Icon ${index + 1}`} // More descriptive alt
+                    width={150} // Matches icon-container width
+                    height={90} // Matches icon-container height
+                    className="icon"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          {id === 4 && (
+            <div className="flex justify-center items-center w-full p-4">
+              <div className="flex flex-wrap gap-6 justify-center">
+                {[
+                  "python.svg",
+                  "java.svg",
+                  "c.svg",
+                  "typescript.svg",
+                  "javascript.svg",
+                  "mysqlfis.svg",
+                  "git.svg",
+                  "docker.svg",
+                  "figma.svg",
+                  "app.svg",
+                  "twilio1.svg",
+                ].map((img, index) => (
+                  <Image
+                    key={index}
+                    src={img}
+                    alt={`Technology Icon ${index + 1}`} // More descriptive alt
+                    width={36} // Matches lg:w-9 (9rem * 4px/rem = 36px)
+                    height={36} // Matches lg:h-9
+                    className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
           {id === 6 && (
             <div className="mt-5 relative">
-      <div
-        className={`absolute -bottom-5 right-0 ${
-          copied ? "block" : "block"
-        }`}
-      >
-        <Lottie options={defaultOptions} height={200} width={400} />
-      </div>
-      <MagicButton
-        title={copied ? "Thanks for the hi-fi dude !" : "Open my CV"}
-        icon={<IoCopyOutline />}
-        position="center"
-        handleClick={handleClick}
-        otherClasses="!bg-[#161A31]"
-      />
-    </div>
+              <div
+                className={`absolute -bottom-5 right-0 ${
+                  copied ? "block" : "block"
+                }`}
+              >
+                <Lottie options={defaultOptions} height={200} width={400} />
+              </div>
+              <MagicButton
+                title={copied ? "Thanks for the hi-fi dude !" : "Open my CV"}
+                icon={<IoCopyOutline />}
+                position="center"
+                handleClick={handleClick}
+                otherClasses="!bg-[#161A31]"
+              />
+            </div>
           )}
         </div>
       </div>
@@ -234,18 +242,14 @@ export const BentoGridItem = ({
     <h1 className="justify-center md:max-w-full max-w-60 text-center">
       Sparks your interest? Gimme a hi-fi & Take a peek at my CV!
     </h1>
-    
   </div>
-  
-</div>
-
+</div>;
 
 if (typeof window !== "undefined" && window.document) {
   const style = window.document.createElement("style");
   style.innerHTML = glowingKeyframes;
   window.document.head.appendChild(style);
 }
-
 
 const gradientFlow = `
 @keyframes gradientFlow {
@@ -260,7 +264,6 @@ if (typeof window !== "undefined" && window.document) {
   gradientStyle.innerHTML = gradientFlow;
   window.document.head.appendChild(gradientStyle);
 }
-
 
 const rollDownKeyframes = `
 @keyframes roll-down {
@@ -288,9 +291,6 @@ const rollDownKeyframes = `
   height: 90px; /* Increase height as needed */
   width: 150px;  /* Adjust width if necessary to maintain aspect ratio */
 }
-
-
-
 `;
 
 if (typeof window !== "undefined" && window.document) {
@@ -298,6 +298,3 @@ if (typeof window !== "undefined" && window.document) {
   rollDownStyle.innerHTML = rollDownKeyframes;
   window.document.head.appendChild(rollDownStyle);
 }
-
-
-

@@ -1,6 +1,7 @@
 "use client";
 
 import { projects } from "@/data";
+import Image from "next/image"; // Import Image component
 import { useEffect, useRef } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { Particles } from "./magicui/particles";
@@ -153,7 +154,7 @@ const RecentProjects = () => {
       {/* Foreground Content */}
       <div className="relative z-10">
         <div className="heading-container">
-          <h1 className="heading font-bold mb-8 text-white"> {/* Reduced from mb-16 to mb-8 */}
+          <h1 className="heading font-bold mb-8 text-white">
             {headingText.map((word, index) => (
               <span
                 key={index}
@@ -168,20 +169,24 @@ const RecentProjects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 md:gap-x-20 gap-y-28 mt-4 mx-auto max-w-[1400px] place-items-center"> {/* Reduced from mt-16 to mt-4 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 md:gap-x-20 gap-y-28 mt-4 mx-auto max-w-[1400px] place-items-center">
           {projects.map((item) => (
             <div key={item.id}>
               <div onClick={() => handleRedirect(item.link)} className="cursor-pointer w-full">
                 <PinContainer title={item.link}>
                   <div className="relative w-full max-w-[550px] h-[180px] sm:h-[200px] md:h-[220px] overflow-hidden rounded-2xl mb-6">
-                    <img
+                    <Image
                       src="/bg.png"
-                      alt="bgimg"
+                      alt="Background Image"
+                      width={550} // Matches max-w-[550px]
+                      height={220} // Matches md:h-[220px]
                       className="absolute inset-0 w-full h-full object-cover opacity-100"
                     />
-                    <img
+                    <Image
                       src={item.img}
-                      alt="cover"
+                      alt={item.title} // Use title for better accessibility
+                      width={550} // Matches max-w-[550px]
+                      height={220} // Matches md:h-[220px]
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
@@ -201,7 +206,13 @@ const RecentProjects = () => {
                           key={index}
                           className="border border-white/[.2] rounded-full bg-black w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center"
                         >
-                          <img src={icon} alt="icon" className="p-2 sm:p-3" />
+                          <Image
+                            src={icon}
+                            alt={`Icon ${index + 1}`} // Descriptive alt text
+                            width={48} // Matches sm:w-12 (12rem * 4px/rem = 48px)
+                            height={48} // Matches sm:h-12
+                            className="p-2 sm:p-3"
+                          />
                         </div>
                       ))}
                     </div>
