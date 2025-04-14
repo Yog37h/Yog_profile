@@ -254,13 +254,13 @@ const Footer = () => {
               ))}
             </h1>
           </div>
-          <div className="w-full max-w-[90vw] sm:max-w-[40rem] mx-auto">
+          <div className="w-full max-w-[90vw] sm:max-w[40rem] mx-auto">
             <TextRevealCard
               text="Reach out today"
               revealText="Lets get connected"
             >
               <TextRevealCardTitle>
-                Sometimes, it's better to Hover
+                Sometimes it is better to Hover
               </TextRevealCardTitle>
               <TextRevealCardDescription>
                 To keep Networking
@@ -269,7 +269,7 @@ const Footer = () => {
           </div>
           <a href="mailto:kiyogesh80@gmail.com" className="mt-6">
             <MagicButton
-              title="Get in touch" // Used HTML entity for apostrophe
+              title="Get in touch"
               icon={<FaLocationArrow />}
               position="right"
               otherClasses="mx-auto"
