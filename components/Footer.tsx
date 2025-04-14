@@ -218,8 +218,8 @@ const Footer = () => {
     return () => observer.disconnect();
   }, []);
 
-  const headingText = "Crazy to take our Digital Convo next level".split(" ");
-  const highlightWords = ["Digital", "Convo"];
+  const headingText = "crazy to take our digital convo next level".split(" ");
+  const highlightWords = ["digital", "convo"];
 
   return (
     <footer
@@ -269,7 +269,7 @@ const Footer = () => {
           </div>
           <a href="mailto:kiyogesh80@gmail.com" className="mt-6">
             <MagicButton
-              title="Let's get in touch"
+              title="Let\'s get in touch" // Escaped apostrophe with backslash
               icon={<FaLocationArrow />}
               position="right"
               otherClasses="mx-auto"
