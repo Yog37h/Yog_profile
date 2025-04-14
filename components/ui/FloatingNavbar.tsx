@@ -69,7 +69,8 @@ export const FloatingNav = ({
 
   return (
     <div
-      className={`flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 rounded-lg border border-black/.1 shadow-lg items-center justify-center space-x-4 ${className}`}
+      id="floating-nav"
+      className={`flex max-w-[300px] md:max-w-[450px] min-w-[200px] md:min-w-[250px] fixed z-[5000] top-10 inset-x-0 mx-auto px-6 py-3 rounded-lg border border-black/[0.1] shadow-lg items-center justify-center space-x-5 md:space-x-6 ${className}`}
       style={{
         backdropFilter: "blur(16px) saturate(180%)",
         backgroundColor: "rgba(17, 25, 40, 0.75)",
@@ -89,10 +90,10 @@ export const FloatingNav = ({
               activeSection === navItem.link.slice(1)
                 ? "text-gray-500"
                 : "text-white-600"
-            } dark:hover:text-neutral-300 hover:text-neutral-500`}
+            } dark:hover:text-neutral-300 hover:text-neutral-500 text-sm md:text-base`}
           >
             <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="text-sm">{navItem.name}</span>
+            <span>{navItem.name}</span>
           </button>
         </Link>
       ))}
