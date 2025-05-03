@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  TextRevealCard,
-  TextRevealCardDescription,
-  TextRevealCardTitle,
+  TextRevealCard
 } from "@/components/ui/text-reveal-card";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
@@ -259,12 +257,7 @@ const Footer = () => {
               text="Reach out today"
               revealText="Lets get connected"
             >
-              <TextRevealCardTitle>
-                Sometimes it is better to Hover
-              </TextRevealCardTitle>
-              <TextRevealCardDescription>
-                To keep Networking
-              </TextRevealCardDescription>
+             
             </TextRevealCard>
           </div>
           <a href="mailto:kiyogesh80@gmail.com" className="mt-6">
