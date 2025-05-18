@@ -164,10 +164,18 @@ export const BentoGridItem = ({
               <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 overflow-hidden h-10 lg:h-140 w-35"></div>
               <div className="icon-container" style={{ animation: "roll-down 15s linear infinite" }}>
                 {[
+                  "djangoproject-ar21.svg",
+                  "springio-ar21.svg",
+                  "reactjs-ar21.svg",
+                  "express-svgrepo-com.svg",
                   "nodejs.svg",
                   "nextjs1.svg",
+                  "mongodb-ar21.svg",
+                  "postgresql-horizontal.svg",
                   "flutter.svg",
                   "angular.svg",
+                  "jenkins-ar21.svg",
+                  "google_cloud-ar21.svg",
                   "nodejs.svg",
                   "nextjs1.svg",
                   "flutter.svg",

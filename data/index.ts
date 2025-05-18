@@ -55,16 +55,16 @@ export const gridItems = [
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-50 left-20 bottom-0 md:w-97 w-100",
     titleClassName: "justify-start",
-    img: "fina2.webp",
+    img: "ach2.svg",
     spareImg: "/grid.svg",
   },
   {
   id: 6,
   title: "Sparks your interest? Gimme a hi-fi & Take a peek at my CV!",
   description: "",
-  className: "lg:col-span-2 md:col-span-3 md:row-span-1 text-center flex flex-col", // Flex for content arrangement
+  className: "lg:col-span-2 md:col-span-3 md:row-span-1 text-center flex flex-col", 
   imgClassName: "",
-  titleClassName: "justify-center md:max-w-full max-w-60 text-center mx-auto", // Centering with `mx-auto`
+  titleClassName: "justify-center md:max-w-full max-w-60 text-center mx-auto", 
   img: "",
   spareImg: "",
 },

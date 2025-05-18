@@ -32,18 +32,9 @@ const styles = `
     width: 100%;
     height: auto;
     animation: dangle 4s ease-in-out infinite;
-    transition: transform 0.2s ease-out, opacity 1s ease-in-out;
+    transition: transform 0.2s ease-out;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
     transform-origin: center;
-    opacity: 0;
-  }
-
-  .svg-image-visible {
-    opacity: 1;
-  }
-
-  .svg-container:hover .svg-image {
-    animation: none;
   }
 
   .tilt-wrapper {
@@ -151,35 +142,7 @@ const styles = `
 const Footer = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const tiltRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<HTMLImageElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const svg = svgRef.current;
-    if (!section || !svg) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            svg.classList.add("svg-image-visible");
-          }, 1000);
-        } else {
-          svg.classList.remove("svg-image-visible");
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px",
-      }
-    );
-
-    observer.observe(section);
-    svg.classList.remove("svg-image-visible");
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const headingSection = headingRef.current;
@@ -216,7 +179,7 @@ const Footer = () => {
     return () => observer.disconnect();
   }, []);
 
-  const headingText = "crazy to take our digital convo next level".split(" ");
+  const headingText = "Crazy to take our digital convo next level".split(" ");
   const highlightWords = ["digital", "convo"];
 
   return (
@@ -274,7 +237,6 @@ const Footer = () => {
           <div ref={tiltRef} className="tilt-wrapper">
             <div className="svg-container">
               <Image
-                ref={svgRef}
                 src="/astra3.svg"
                 alt="Astra SVG"
                 width={500}

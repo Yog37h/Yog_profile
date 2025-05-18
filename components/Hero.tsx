@@ -113,8 +113,7 @@ const Hero = () => {
           />
 
           <p className="text-center md:text-left md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            A Tech-savvy Professional with deep love for Technology and
-            Problem-solving with Business Ideologies
+            A Tech-savvy Professional with deep love for Technology and Business Ideologies
           </p>
 
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white md:text-left text-center mt-4">
