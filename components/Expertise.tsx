@@ -1,7 +1,6 @@
 // @/components/Expertise.tsx
 "use client";
 import { useEffect, useRef } from "react";
-import { Particles } from "./magicui/particles";
 import { AnimatedTestimonials } from "./ui/animated-testimonials";
 
 // CSS styles
@@ -175,13 +174,7 @@ export const Expertise: React.FC = () => {
     >
       <style>{styles}</style>
       {/* Particles Background */}
-      <Particles
-        className="absolute inset-0 z-0"
-        quantity={80}
-        ease={80}
-        color="#CBACF9"
-        refresh
-      />
+     
 
       {/* Foreground Content */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto">

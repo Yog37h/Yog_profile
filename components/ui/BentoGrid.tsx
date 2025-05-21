@@ -165,21 +165,40 @@ export const BentoGridItem = ({
               <div className="icon-container" style={{ animation: "roll-down 15s linear infinite" }}>
                 {[
                   "djangoproject-ar21.svg",
-                  "springio-ar21.svg",
+                  
                   "reactjs-ar21.svg",
                   "express-svgrepo-com.svg",
                   "nodejs.svg",
                   "nextjs1.svg",
+                  "nestjs.svg",
+                  "springio-ar21.svg",
                   "mongodb-ar21.svg",
-                  "postgresql-horizontal.svg",
+                  "vuejs.svg",
                   "flutter.svg",
                   "angular.svg",
                   "jenkins-ar21.svg",
-                  "google_cloud-ar21.svg",
                   "nodejs.svg",
                   "nextjs1.svg",
                   "flutter.svg",
                   "angular.svg",
+                  "djangoproject-ar21.svg",
+                  
+                  "reactjs-ar21.svg",
+                  "express-svgrepo-com.svg",
+                  "nodejs.svg",
+                  "nextjs1.svg",
+                  "nestjs.svg",
+                  "springio-ar21.svg",
+                  "mongodb-ar21.svg",
+                  "vuejs.svg",
+                  "flutter.svg",
+                  "angular.svg",
+                  "jenkins-ar21.svg",
+                  "nodejs.svg",
+                  "nextjs1.svg",
+                  "flutter.svg",
+                  "angular.svg",
+                  
                 ].map((img, index) => (
                   <Image
                     key={index}

@@ -34,7 +34,7 @@ export const gridItems = [
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-right",
-    img: "",
+    img: "/grid.svg",
     spareImg: "",
   },
   {
@@ -79,7 +79,7 @@ export const projects = [
     title: "3D Solar System Planets to Explore",
     des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
     img: "/po1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    iconLists: ["/flut.svg", "/Appwrite.svg", "/gmaps.svg", "/openai1.svg", "/maven.svg"],
     link: "https://github.com/Yog37h/medapp",
   },
   {
@@ -87,7 +87,7 @@ export const projects = [
     title: "Yoom - Video Conferencing App",
     des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
     img: "/po3.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+    iconLists: ["/dart1.svg", "/raspberry.svg", "/meta.svg", "/express.svg", "/post.svg"],
     link: "/ui.yoom.com",
   },
   {
@@ -95,7 +95,7 @@ export const projects = [
     title: "AI Image SaaS - Canva Application",
     des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
     img: "/po2.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+    iconLists: ["/re.svg", "/babel.svg", "/amazon.svg", "/airtable.svg", "/firebase1.svg"],
     link: "/ui.aiimg.com",
   },
   {
@@ -103,7 +103,7 @@ export const projects = [
     title: "Animated Apple Iphone 3D Website",
     des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
     img: "/idea3.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    iconLists: ["/spring.svg", "/swift.svg", "/sparkfun.svg", "/nfc1.svg", "/mongodb.svg"],
     link: "/ui.apple.com",
   },
 ];
