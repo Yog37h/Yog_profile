@@ -162,7 +162,7 @@ export const BentoGridItem = ({
           {id === 3 && (
             <div className="flex gap-1 lg:gap-5 w-auto absolute left-55 right-3 lg:left-60">
               <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 overflow-hidden h-10 lg:h-140 w-35"></div>
-              <div className="icon-container" style={{ animation: "roll-down 15s linear infinite" }}>
+              <div className="icon-container" style={{ animation: "roll-down 25s linear infinite" }}>
                 {[
                   "djangoproject-ar21.svg",
                   
@@ -225,8 +225,8 @@ export const BentoGridItem = ({
                   "git.svg",
                   "docker.svg",
                   "figma.svg",
-                  "app.svg",
-                  "twilio1.svg",
+                  "aws1.svg",
+                  "gcp.svg",
                 ].map((img, index) => (
                   <Image
                     key={index}
