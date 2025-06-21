@@ -179,9 +179,11 @@ const Experience = () => {
             <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
               <Image
                 src={card.thumbnail}
-                alt={card.title} // Use title for better accessibility
-                width={128} // Matches lg:w-32 (32rem * 4 = 128px)
-                height={128} // Square aspect ratio for thumbnails
+                alt={card.title}
+                width={128}
+                height={128}
+                loading="lazy" // Experience section loads later
+                sizes="(max-width: 768px) 64px, (max-width: 1024px) 80px, 128px"
                 className="lg:w-32 md:w-20 w-16"
               />
               <div className="lg:ms-5">

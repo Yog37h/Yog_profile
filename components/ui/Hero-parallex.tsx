@@ -177,6 +177,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, translate }) 
           src={product.thumbnail}
           height={600}
           width={600}
+          loading="lazy" // Parallax images load later
+          sizes="(max-width: 640px) 90vw, (max-width: 768px) 24rem, (max-width: 1024px) 28rem, 28rem"
           className="absolute inset-0 h-full w-full rounded-lg object-cover object-center"
           alt={product.title}
           onError={() => console.error(`Failed to load image: ${product.thumbnail}`)}

@@ -1,12 +1,23 @@
 "use client";
-
 import {
   TextRevealCard
 } from "@/components/ui/text-reveal-card";
+import { cn } from "@/lib/utils";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  useVelocity,
+} from "motion/react";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
+import { FiLink } from "react-icons/fi";
 import MagicButton from "./MagicButton";
+import { FooterGridSVG } from "./ui/InlineSVGs";
 
 const styles = `
   .svg-container {
@@ -91,6 +102,51 @@ const styles = `
     color: white;
   }
 
+  .footer-content {
+    text-align: center;
+    color: white;
+    font-size: 1.25rem;
+    margin: 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: #CBACF9;
+  }
+
+  .location-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
+
+  .copyright {
+    text-align: center;
+    color: white;
+    font-size: 0.875rem;
+    margin: 1rem 0 1rem 0;
+    opacity: 0.7;
+  }
+
   @media (max-width: 640px) {
     .svg-container {
       max-width: 70%;
@@ -111,6 +167,10 @@ const styles = `
     }
     .heading-container {
       padding: 0 0.5rem;
+    }
+    .footer-content {
+      font-size: 1rem;
+      padding: 0 1rem;
     }
   }
 
@@ -138,6 +198,132 @@ const styles = `
     }
   }
 `;
+
+interface VelocityScrollProps extends React.HTMLAttributes<HTMLDivElement> {
+  defaultVelocity?: number;
+  className?: string;
+  numRows?: number;
+}
+
+interface ParallaxProps extends React.HTMLAttributes<HTMLDivElement> {
+  texts: string[];
+  baseVelocity: number;
+}
+
+const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
+
+function ParallaxText({
+  texts,
+  baseVelocity = 3,
+  ...props
+}: ParallaxProps) {
+  const baseX = useMotionValue(0);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 400,
+  });
+
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false,
+  });
+
+  const [repetitions, setRepetitions] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const calculateRepetitions = () => {
+      if (containerRef.current && textRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const textWidth = textRef.current.offsetWidth;
+        const newRepetitions = Math.ceil(containerWidth / textWidth) + 2;
+        setRepetitions(newRepetitions);
+      }
+    };
+
+    calculateRepetitions();
+
+    window.addEventListener("resize", calculateRepetitions);
+    return () => window.removeEventListener("resize", calculateRepetitions);
+  }, [texts]);
+
+  const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);
+
+  const directionFactor = React.useRef<number>(1);
+  useAnimationFrame((t, delta) => {
+    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+
+    if (velocityFactor.get() < 0) {
+      directionFactor.current = -1;
+    } else if (velocityFactor.get() > 0) {
+      directionFactor.current = 1;
+    }
+
+    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+
+    baseX.set(baseX.get() + moveBy);
+  });
+
+  const combinedText = texts.join(" - ");
+
+  return (
+    <div
+      ref={containerRef}
+      className="w-full overflow-hidden whitespace-nowrap"
+      {...props}
+    >
+      <motion.div className="inline-block" style={{ x }}>
+        {Array.from({ length: repetitions }).map((_, i) => (
+          <span key={i} ref={i === 0 ? textRef : null}>
+            {combinedText}{" "}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+function SequentialVelocityScroll({
+  defaultVelocity = 2,
+  numRows = 2,
+  className,
+  ...props
+}: VelocityScrollProps) {
+  const texts = [
+    "- DevOps",
+    "Landing pages",
+    "Pitch desks",
+    "AI influencer modeling",
+    "AI automations",
+    "Content creation",
+    "Digital marketing",
+  ];
+
+  return (
+    <div
+      className={cn(
+        "relative w-full text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-[5rem] text-white",
+        className,
+      )}
+      {...props}
+    >
+      {Array.from({ length: numRows }).map((_, i) => (
+        <ParallaxText
+          key={i}
+          texts={texts}
+          baseVelocity={defaultVelocity * (i % 2 === 0 ? 1 : -1)}
+        />
+      ))}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black-100"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black-100"></div>
+    </div>
+  );
+}
 
 const Footer = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -185,21 +371,26 @@ const Footer = () => {
   return (
     <footer
       ref={sectionRef}
-      className="w-full pt-20 pb-32 relative"
+      className="w-full pt-20 pb-4 relative min-h-screen bg-black-100"
       id="contact"
     >
       <style>{styles}</style>
-      <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <Image
-          src="/footer-grid.svg"
-          alt="grid"
-          width={1920}
-          height={1080}
-          className="w-full h-full opacity-50"
+      {/* Background Grid - Version 1 UI */}
+      <div
+        className="absolute inset-0 w-full min-h-screen dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
+        top-0 left-0 flex items-center justify-center"
+      >
+        <div
+          className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
+          bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
         />
       </div>
 
-      <div className="flex flex-col md:flex-row w-full justify-center md:justify-between items-center h-full px-4 sm:px-10">
+      <div className="w-full absolute left-0 -bottom-72 min-h-96">
+        <FooterGridSVG className="w-full h-full opacity-50" />
+      </div>
+
+      <div className="flex flex-col md:flex-row w-full justify-center md:justify-between items-center h-full px-4 sm:px-10 relative z-10">
         <div className="flex flex-col items-center w-full md:w-1/2 mb-10 md:mb-0 text-center">
           <div ref={headingRef} className="heading-container">
             <h1 className="heading font-bold mb-4">
@@ -215,13 +406,11 @@ const Footer = () => {
               ))}
             </h1>
           </div>
-          <div className="w-full max-w-[90vw] sm:max-w[40rem] mx-auto">
+          <div className="w-full max-w-[90vw] sm:max-w-[40rem] mx-auto">
             <TextRevealCard
               text="Reach out today"
               revealText="Lets get connected"
-            >
-             
-            </TextRevealCard>
+            />
           </div>
           <a href="mailto:kiyogesh80@gmail.com" className="mt-6">
             <MagicButton
@@ -241,11 +430,38 @@ const Footer = () => {
                 alt="Astra SVG"
                 width={500}
                 height={500}
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 500px"
                 className="svg-image"
               />
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Sequential Velocity Scroll Component */}
+      <div className="w-full mt-12 mb-15 relative z-8">
+        <SequentialVelocityScroll defaultVelocity={2} numRows={2} />
+      </div>
+
+      {/* Footer Content */}
+      <div className="w-full relative z-10 mt-20 mb-0 pb-0">
+      <div className="footer-content text-center">
+      Need a hand with anything above? Feel free to hit me up!
+      </div>
+      <div className="flex justify-center items-center text-white text-base font-sans">
+  <a href="#hero" className="flex items-center no-underline text-white text-base font-sans">
+    <FiLink className="mr-1" />
+    <span> Socials</span>
+  </a>
+</div>
+      <div className="location-container flex justify-center items-center gap-2 text-white">
+        <FaLocationArrow />
+        <span className="font-sans text-base text-white">Bengaluru</span>
+      </div>
+      <div className="copyright text-center mb-10">
+        © 2025 Yogeshwaran S - All rights reserved
+      </div>
       </div>
     </footer>
   );

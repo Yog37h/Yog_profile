@@ -1,4 +1,3 @@
-// @/components/Expertise.tsx
 "use client";
 import { useEffect, useRef } from "react";
 import { AnimatedTestimonials } from "./ui/animated-testimonials";
@@ -170,11 +169,19 @@ export const Expertise: React.FC = () => {
   return (
     <section
       id="expertise"
-      className="relative w-full bg-black-100 flex flex-col items-center justify-start py-12 px-6 md:px-12 overflow-hidden"
+      className="relative w-full bg-black-100 flex flex-col items-center justify-start py-12 px-6 md:px-12 overflow-hidden min-h-screen"
+      ref={sectionRef}
     >
-      <style>{styles}</style>
-      {/* Particles Background */}
-     
+      {/* Background Grid - Version 1 UI (same as Hero section) */}
+      <div
+        className="absolute inset-0 w-full min-h-screen dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
+        top-0 left-0 flex items-center justify-center"
+      >
+        <div
+          className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
+          bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+        />
+      </div>
 
       {/* Foreground Content */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto">

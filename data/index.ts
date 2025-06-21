@@ -9,13 +9,13 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "Compiling Dreams into Reality",
+    title: "An Engineer building Stuffs with passion",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
     img: "/m2.svg",
-    spareImg: "/grid.svg",
+    spareImg: "",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ export const gridItems = [
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-start",
-    img: "",
+    img: "/grid.svg",
     spareImg: "",
   },
   {
@@ -60,7 +60,7 @@ export const gridItems = [
   },
   {
   id: 6,
-  title: "Sparks your interest? Gimme a hi-fi & Take a peek at my CV!",
+  title: "Sparks your interest? Drop a hi-fi & Take a look at my CV!",
   description: "",
   className: "lg:col-span-2 md:col-span-3 md:row-span-1 text-center flex flex-col", 
   imgClassName: "",
@@ -85,10 +85,10 @@ export const projects = [
   {
     id: 2,
     title: "Wavewise - Maritime Safety Ecosystem",
-    des: "An IEEE research turned down into revolutionary app serving security and business benefits for fishers",
+    des: "An IEEE research turned down into revolutionary IOT powered app serving security and business benefits for fishers",
     img: "/po3.svg",
     iconLists: ["/dart1.svg", "/raspberry.svg", "/meta.svg", "/express.svg", "/post.svg"],
-    link: "/ui.yoom.com",
+    link: "https://github.com/Yog37h/Wave-Wise",
   },
   {
     id: 3,
@@ -96,7 +96,7 @@ export const projects = [
     des: "A REAL stock app for small scaler vendors and platform to assess the real-time traffic and customer-owner connections",
     img: "/po2.svg",
     iconLists: ["/re.svg", "/babel.svg", "/amazon.svg", "/airtable.svg", "/firebase1.svg"],
-    link: "/ui.aiimg.com",
+    link: "https://github.com/Yog37h/Bizzspot-stock-",
   },
   {
     id: 4,
@@ -104,7 +104,7 @@ export const projects = [
     des: "Utilised NFC and RFID technology to foster smart cart and enable efficient checkouts",
     img: "/idea3.svg",
     iconLists: ["/spring.svg", "/swift.svg", "/sparkfun.svg", "/nfc1.svg", "/mongodb.svg"],
-    link: "/ui.apple.com",
+    link: "https://github.com/hari-haran04/Boltmart",
   },
 ];
 

@@ -18,6 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Preload critical images */}
+        <link rel="preload" href="/tol1.avif" as="image" type="image/avif" />
+        <link rel="preload" href="/tol2.avif" as="image" type="image/avif" />
+        <link rel="preload" href="/tol3.avif" as="image" type="image/avif" />
+        {/* Preload critical SVGs */}
+        <link rel="preload" href="/footer-grid.svg" as="image" type="image/svg+xml" />
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"

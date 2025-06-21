@@ -85,6 +85,8 @@ const BlurImage = ({ card }: { card: Card }) => {
       src={card.thumbnail}
       height="100"
       width="100"
+      loading="lazy" // Layout grid images load later
+      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
       onLoad={() => setLoaded(true)}
       className={cn(
         "object-cover object-top absolute inset-0 h-full w-full transition duration-200",

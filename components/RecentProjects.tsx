@@ -208,9 +208,11 @@ const RecentProjects = () => {
                         >
                           <Image
                             src={icon}
-                            alt={`Icon ${index + 1}`} // Descriptive alt text
-                            width={48} // Matches sm:w-12 (12rem * 4px/rem = 48px)
-                            height={48} // Matches sm:h-12
+                            alt={`Icon ${index + 1}`}
+                            width={48}
+                            height={48}
+                            loading="lazy" // Project icons load later
+                            sizes="48px"
                             className="p-2 sm:p-3"
                           />
                         </div>

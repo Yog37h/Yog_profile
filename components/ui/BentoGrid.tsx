@@ -7,20 +7,9 @@ import Lottie from "react-lottie";
 import MagicButton from "../MagicButton";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
+import { JavaScriptIcon, PythonIcon, TypeScriptIcon } from "./InlineSVGs";
 
-const glowingKeyframes = `
-@keyframes glowing {
-  100% {
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
-  }
-  50% {
-    text-shadow: 0 0 2px #d02aba, 0 0 5px #ee16c3, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff;
-  }
-  100% {
-    text-shadow: 0 0 5px #e51ba1, 0 0 10px #de12af, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
-  }
-}
-`;
+
 
 export const BentoGrid = ({
   className,
@@ -108,8 +97,10 @@ export const BentoGridItem = ({
             <Image
               src={img}
               alt={title as string}
-              width={400} // Estimated for bento grid item
-              height={300} // Estimated aspect ratio
+              width={400}
+              height={300}
+              loading={id === 1 || id === 2 ? "eager" : "lazy"} // Prioritize first two grid items
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className={cn(
                 imgClassName,
                 "object-cover object-center w-full h-full transform group-hover/bento:scale-110 transition-transform duration-500"
@@ -126,8 +117,10 @@ export const BentoGridItem = ({
             <Image
               src={spareImg}
               alt="Spare Image"
-              width={id === 5 ? 400 : 160} // Full width for id=5, else w-40
-              height={id === 5 ? 300 : 160} // Match height
+              width={id === 5 ? 400 : 160}
+              height={id === 5 ? 300 : 160}
+              loading="lazy" // Spare images can load later
+              sizes={id === 5 ? "(max-width: 768px) 100vw, 400px" : "160px"}
               className={`object-cover object-center ${
                 id === 5
                   ? "w-full h-full top-0 bottom-0 right-0 left-0"
@@ -153,7 +146,7 @@ export const BentoGridItem = ({
             {description}
           </div>
           <div
-            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10 ${id === 2 ? "animate-glowing" : ""}`}
+            className="font-sans text-lg lg:text-3xl max-w-96 font-bold z-10"
           >
             {title}
           </div>
@@ -165,24 +158,22 @@ export const BentoGridItem = ({
               <div className="icon-container" style={{ animation: "roll-down 25s linear infinite" }}>
                 {[
                   "djangoproject-ar21.svg",
-                  
                   "reactjs-ar21.svg",
                   "express-svgrepo-com.svg",
                   "nodejs.svg",
-                  "nextjs1.svg",
+                  "nextjs1.svg",      
                   "nestjs.svg",
                   "springio-ar21.svg",
                   "mongodb-ar21.svg",
                   "vuejs.svg",
                   "flutter.svg",
                   "angular.svg",
-                  "jenkins-ar21.svg",
                   "nodejs.svg",
                   "nextjs1.svg",
                   "flutter.svg",
                   "angular.svg",
+                  "gitlab.svg",
                   "djangoproject-ar21.svg",
-                  
                   "reactjs-ar21.svg",
                   "express-svgrepo-com.svg",
                   "nodejs.svg",
@@ -193,11 +184,11 @@ export const BentoGridItem = ({
                   "vuejs.svg",
                   "flutter.svg",
                   "angular.svg",
-                  "jenkins-ar21.svg",
                   "nodejs.svg",
                   "nextjs1.svg",
                   "flutter.svg",
                   "angular.svg",
+                  "gitlab.svg",
                   
                 ].map((img, index) => (
                   <Image
@@ -215,25 +206,37 @@ export const BentoGridItem = ({
           {id === 4 && (
             <div className="flex justify-center items-center w-full p-4">
               <div className="flex flex-wrap gap-6 justify-center">
-                {[
-                  "python.svg",
-                  "java.svg",
-                  "c.svg",
-                  "typescript.svg",
-                  "javascript.svg",
-                  "mysqlfis.svg",
-                  "git.svg",
-                  "docker.svg",
-                  "figma.svg",
-                  "aws1.svg",
-                  "gcp.svg",
-                ].map((img, index) => (
+                {/* Use inline SVGs for common icons to reduce HTTP requests */}
+                <PythonIcon className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]" />
+                <Image
+                  src="java.svg"
+                  alt="Java"
+                  width={36}
+                  height={36}
+                  loading="lazy"
+                  sizes="36px"
+                  className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
+                />
+                <Image
+                  src="c++.svg"
+                  alt="C"
+                  width={36}
+                  height={36}
+                  loading="lazy"
+                  sizes="36px"
+                  className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
+                />
+                <TypeScriptIcon className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]" />
+                <JavaScriptIcon className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]" />
+                {["mysqlfis.svg", "git.svg", "docker.svg", "figma.svg", "aws1.svg", "gcp.svg", "jenkinsww.svg"].map((img, index) => (
                   <Image
                     key={index}
                     src={img}
-                    alt={`Technology Icon ${index + 1}`} // More descriptive alt
-                    width={36} // Matches lg:w-9 (9rem * 4px/rem = 36px)
-                    height={36} // Matches lg:h-9
+                    alt={`Technology Icon ${index + 6}`}
+                    width={36}
+                    height={36}
+                    loading="lazy"
+                    sizes="36px"
                     className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
                   />
                 ))}
@@ -264,64 +267,3 @@ export const BentoGridItem = ({
   );
 };
 
-<div className="lg:col-span-2 md:col-span-3 md:row-span-1 text-center relative">
-  <div className="absolute inset-0 flex flex-col justify-center items-center">
-    <h1 className="justify-center md:max-w-full max-w-60 text-center">
-      Sparks your interest? Gimme a hi-fi & Take a peek at my CV!
-    </h1>
-  </div>
-</div>;
-
-if (typeof window !== "undefined" && window.document) {
-  const style = window.document.createElement("style");
-  style.innerHTML = glowingKeyframes;
-  window.document.head.appendChild(style);
-}
-
-const gradientFlow = `
-@keyframes gradientFlow {
-  100% { background-position: 50% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 50% 50%; }
-}
-`;
-
-if (typeof window !== "undefined" && window.document) {
-  const gradientStyle = window.document.createElement("style");
-  gradientStyle.innerHTML = gradientFlow;
-  window.document.head.appendChild(gradientStyle);
-}
-
-const rollDownKeyframes = `
-@keyframes roll-down {
-  0% {
-    transform: translateY(0); /* Start from the top */
-  }
-  50% {
-    transform: translateY(-50%); /* Move up by half the total container height */
-  }
-  100% {
-    transform: translateY(-100%); /* Move up completely by the height of one full cycle */
-  }
-}
-
-.icon-container {
-  display: flex;
-  flex-direction: column; /* Arrange icons vertically */
-  width: 100%; /* Take up the full container width */
-  height: 100%; /* Ensure the container has full height */
-  overflow: hidden; /* Hide content that moves off-screen */
-}
-
-.icon-container img {
-  margin-bottom: 10; /* No margin between images to ensure seamless transition */
-  height: 90px; /* Increase height as needed */
-  width: 150px;  /* Adjust width if necessary to maintain aspect ratio */
-}
-`;
-
-if (typeof window !== "undefined" && window.document) {
-  const rollDownStyle = window.document.createElement("style");
-  rollDownStyle.innerHTML = rollDownKeyframes;
-  window.document.head.appendChild(rollDownStyle);
-}

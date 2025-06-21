@@ -12,11 +12,18 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 const Hero = () => {
   const [inView, setInView] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const aboutSectionRef = useRef<HTMLDivElement>(null);
 
-  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  const scrollToAboutSection = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      // Get the floating navbar height for proper offset
+      const navbarHeight = document.getElementById("floating-nav")?.offsetHeight || 0;
+      const offsetPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; // Extra 20px padding
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -44,7 +51,7 @@ const Hero = () => {
 
   return (
     <div className="min-h-screen pb-20 pt-36 relative flex items-center" ref={sectionRef}>
-      {/* Spotlights */}
+      {/* Spotlights - Version 1 UI (same for desktop, no mobile changes) */}
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -57,7 +64,7 @@ const Hero = () => {
         <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
 
-      {/* Background Grid */}
+      {/* Background Grid - Version 1 UI (same for desktop, no mobile changes) */}
       <div
         className="absolute inset-0 w-full min-h-screen dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
        absolute top-0 left-0 flex items-center justify-center"
@@ -70,34 +77,34 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between w-full">
-        {/* Main AVIF Image for Laptop */}
+        {/* Main AVIF Image for Desktop - Version 1 UI */}
         <div className="hidden md:block relative w-1/2 lg:w-1/2 animate-bounce-slow">
           <Image
             src="/tol1.avif"
             alt="Yogeshwaran"
-            width={600} // Estimated for full-width image
-            height={600} // Assuming square aspect ratio
+            width={600}
+            height={600}
             className={`rounded-full object-cover w-full lg:w-[150%] transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
           />
           <Image
             src="/tol2.avif"
             alt="Additional Top Left"
-            width={100} // Matches max-w-[100px]
-            height={100} // Square aspect ratio
+            width={100}
+            height={100}
             className={`absolute top-[-20px] left-[5%] w-[25%] max-w-[100px] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
             style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(-50%)" }}
           />
           <Image
             src="/tol3.avif"
             alt="Additional Bottom Right"
-            width={120} // Estimated for w-[30%]
-            height={120} // Square aspect ratio
+            width={120}
+            height={120}
             className={`absolute bottom-[-40px] right-[-40px] w-[30%] rounded-full shadow-md transition-transform duration-1000 ${inView ? 'translate-x-0' : 'translate-x-full'}`}
             style={{ transform: inView ? "translateY(-10px)" : "translateY(-10px) translateX(50%)" }}
           />
         </div>
 
-        {/* Text and Social Links */}
+        {/* Text and Social Links - Version 1 UI */}
         <div className="w-full max-w-3xl px-4 text-center md:text-left flex flex-col items-center md:items-start justify-center mx-auto md:mx-0 md:pl-20">
           <p className="uppercase tracking-widest text-lg text-center md:text-left text-blue-100 mb-[-10px]">
             Hello, This is me
@@ -108,7 +115,7 @@ const Hero = () => {
             className="text-center md:text-left text-[40px] md:text-5xl lg:text-6xl transition-all duration-300 hover:text-purple hover:[text-shadow:0_0_10px_rgba(203,172,249,0.8),0_0_20px_rgba(203,172,249,0.6),0_0_30px_rgba(203,172,249,0.4)]"
           />
           <TextCycling
-            words="Software Engineer, Player, Developer, Tech Enthusiast"
+            words="Software Engineer, Developer, Hackathon winner, AI Freak"
             className="text-center md:text-left text-[30px] md:text-4xl lg:text-5xl mt-[-20px] md:mt-[-30px]"
           />
 
@@ -120,7 +127,7 @@ const Hero = () => {
             Connect with <span className="text-purple">Me</span>
           </h1>
 
-          {/* Social Media Icons */}
+          {/* Social Media Icons - Version 1 UI */}
           <div className="flex justify-center md:justify-start space-x-8 mt-4">
             <a
               href="https://github.com/YourUsername"
@@ -156,47 +163,41 @@ const Hero = () => {
             </a>
           </div>
 
-          {/* AVIF Images for Mobile */}
+          {/* AVIF Images for Mobile - Version 1 UI */}
           <div className="mt-12 md:hidden flex flex-col items-center space-y-4 relative">
             <Image
               src="/tol1.avif"
               alt="Yogeshwaran"
-              width={128} // Matches w-32 (32rem * 4px/rem = 128px)
-              height={128} // Matches h-32
+              width={128}
+              height={128}
               className={`w-32 h-32 rounded-full object-cover shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
             />
             <Image
               src="/tol2.avif"
               alt="Additional Top Left"
-              width={64} // Matches w-16 (16rem * 4px/rem = 64px)
-              height={64} // Square aspect ratio
+              width={64}
+              height={64}
               className={`absolute top-[-20px] left-[-40px] w-16 rounded-full shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : '-translate-x-full'}`}
             />
             <Image
               src="/tol3.avif"
               alt="Additional Bottom Right"
-              width={64} // Matches w-16
-              height={64} // Square aspect ratio
+              width={64}
+              height={64}
               className={`absolute bottom-[-10px] right-[-30px] w-16 rounded-full shadow-md animate-bounce-slow transition-transform duration-1000 ${inView ? 'translate-x-0' : 'translate-x-full'}`}
             />
           </div>
 
-          {/* Magic Button */}
-          <div ref={aboutSectionRef} id="about" className="hidden" />
-          <a
-            className="block mt-12 md:mt-12"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection(aboutSectionRef);
-            }}
-          >
+          {/* Magic Button - Version 2 Functionality with Version 1 UI */}
+          <div className="block mt-12 md:mt-3">
             <MagicButton
               title="Explore me"
               icon={<FaLocationArrow />}
               position="right"
+              handleClick={scrollToAboutSection}
               otherClasses="mt-0"
             />
-          </a>
+          </div>
         </div>
       </div>
     </div>

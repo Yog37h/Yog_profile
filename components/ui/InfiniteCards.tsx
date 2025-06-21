@@ -175,7 +175,7 @@ export const InfiniteMovingCards = ({
               <li
                 key={idx}
                 className={cn(
-                  "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16 transition-opacity duration-1000",
+                  "w-[80vw] max-w-full rounded-2xl border border-b-0 p-5 md:p-16 transition-opacity duration-10",
                   currentIndex === idx ? "opacity-100" : "opacity-0 absolute"
                 )}
                 style={{

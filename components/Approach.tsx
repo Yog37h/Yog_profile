@@ -142,11 +142,9 @@ const Approach = () => {
       </div>
       <div className="my-4 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         <Card
-          title="Planning & Strategy"
+          title="Development & CI/CD"
           icon={<AceternityIcon order="Phase 1" />}
-          des="We'll collaborate to map out your website's goals, target audience, 
-          and key functionalities. We'll discuss things like site structure, 
-          navigation, and content requirements."
+          des="Love building and shipping fullstack products even stylish landing pages fast with CI/CD and SEO optimized - automating workflows for smoother, smarter development."
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -154,11 +152,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Development & Progress Update"
+          title="Creative branding & Digital presence"
           icon={<AceternityIcon order="Phase 2" />}
-          des="Once we agree on the plan, I cue my lofi playlist and dive into
-          coding. From initial sketches to polished code, I keep you updated
-          every step of the way."
+          des="Crafting standout brand identities with Story telling and boosting digital presence with content creation and canvas desigining Pitch desks that captivates, connects, and converts."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -171,11 +167,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Development & Launch"
+          title="Automations & business solutions"
           icon={<AceternityIcon order="Phase 3" />}
-          des="This is where the magic happens! Based on the approved design, 
-          I'll translate everything into functional code, building your website
-          from the ground up."
+          des="Building smart automations and scalable solutions to streamline workflows, optimize operations, and empower businesses with data-driven decision-making with N8N, Meta AI and more"
         >
           <CanvasRevealEffect
             animationSpeed={3}

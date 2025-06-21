@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Test</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        #hero {
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+        }
+        #about {
+            background: linear-gradient(45deg, #0f3460, #16537e);
+        }
+        .button {
+            padding: 12px 24px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background: #4f46e5;
+        }
+    </style>
+</head>
+<body>
+    <div id="hero" class="section">
+        <div style="text-align: center;">
+            <h1>Hero Section</h1>
+            <button class="button" onclick="scrollToAbout()">Explore Me</button>
+        </div>
+    </div>
+    
+    <div id="about" class="section">
+        <div style="text-align: center;">
+            <h1>About Section</h1>
+            <p>This is the About section that should be scrolled to!</p>
+        </div>
+    </div>
+
+    <script>
+        function scrollToAbout() {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ 
+                    behavior: "smooth", 
+                    block: "start",
+                    inline: "nearest"
+                });
+            }
+        }
+    </script>
+</body>
+</html>
