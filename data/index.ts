@@ -19,7 +19,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "An Extrovert with technology in hands to explore",
+    title: "Blending Dev-AI-Branding-Business",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -101,7 +101,7 @@ export const projects = [
   {
     id: 4,
     title: "Boltmart - Your seamless Shopping assistance",
-    des: "Utilised NFC and RFID technology to foster smart cart and enable efficient checkouts",
+    des: "Utilised NFC and RFID technology to foster smart cart and enable efficient checkouts with payment stuffs",
     img: "/idea3.svg",
     iconLists: ["/spring.svg", "/swift.svg", "/sparkfun.svg", "/nfc1.svg", "/mongodb.svg"],
     link: "https://github.com/hari-haran04/Boltmart",
@@ -132,7 +132,7 @@ export const testimonials = [
   },
   {
    quote: [
-      "Passionate Community Cricketer",
+      "Social media marketer",
       "Been a part of College Handball Team",
       "Content writer at Medium",
       "Fiver Freelancer making passive outcome",
