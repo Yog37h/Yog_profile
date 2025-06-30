@@ -461,7 +461,7 @@ const Footer = () => {
       {/* Footer Content with Gradient Background */}
       <div className="w-screen relative left-1/2 transform -translate-x-1/2 z-5"
            style={{ background: 'linear-gradient(to top, #0f172a, #164e63, #22d3ee)' }}>
-        <div className="w-full max-w-7xl mx-auto px-4 relative z-10 pt-8 pb-4">
+        <div className="w-full max-w-7xl mx-auto px-4 relative z-10 pt-1 pb-4">
           <div className="footer-content text-center">
             Need a hand with anything above? Feel free to hit me up!
           </div>
