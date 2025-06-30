@@ -147,6 +147,13 @@ const styles = `
     opacity: 0.7;
   }
 
+  .velocity-scroll-container {
+    margin: 2rem 0;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 10;
+  }
+
   @media (max-width: 640px) {
     .svg-container {
       max-width: 70%;
@@ -172,6 +179,9 @@ const styles = `
       font-size: 1rem;
       padding: 0 1rem;
     }
+    .velocity-scroll-container {
+      font-size: 1.5rem !important;
+    }
   }
 
   @media (min-width: 641px) and (max-width: 1024px) {
@@ -184,6 +194,9 @@ const styles = `
     .word-wrapper {
       padding: 0 0.2rem;
     }
+    .velocity-scroll-container {
+      font-size: 2.5rem !important;
+    }
   }
 
   @media (min-width: 1025px) {
@@ -195,6 +208,9 @@ const styles = `
     }
     .word-wrapper {
       padding: 0 0.25rem;
+    }
+    .velocity-scroll-container {
+      font-size: 3rem !important;
     }
   }
 `;
@@ -241,13 +257,12 @@ function ParallaxText({
       if (containerRef.current && textRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
         const textWidth = textRef.current.offsetWidth;
-        const newRepetitions = Math.ceil(containerWidth / textWidth) + 2;
+        const newRepetitions = Math.ceil(containerWidth / textWidth) + 3; // Increased for smoother looping
         setRepetitions(newRepetitions);
       }
     };
 
     calculateRepetitions();
-
     window.addEventListener("resize", calculateRepetitions);
     return () => window.removeEventListener("resize", calculateRepetitions);
   }, [texts]);
@@ -265,11 +280,10 @@ function ParallaxText({
     }
 
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
-
     baseX.set(baseX.get() + moveBy);
   });
 
-  const combinedText = texts.join(" - ");
+  const combinedText = texts.join(" • "); // Changed separator to bullet for cleaner spacing
 
   return (
     <div
@@ -277,10 +291,10 @@ function ParallaxText({
       className="w-full overflow-hidden whitespace-nowrap"
       {...props}
     >
-      <motion.div className="inline-block" style={{ x }}>
+      <motion.div className="inline-block text-[inherit]" style={{ x }}>
         {Array.from({ length: repetitions }).map((_, i) => (
-          <span key={i} ref={i === 0 ? textRef : null}>
-            {combinedText}{" "}
+          <span key={i} ref={i === 0 ? textRef : null} className="mx-2">
+            {combinedText}
           </span>
         ))}
       </motion.div>
@@ -295,9 +309,9 @@ function SequentialVelocityScroll({
   ...props
 }: VelocityScrollProps) {
   const texts = [
-    "- DevOps",
+    "DevOps",
     "Landing pages",
-    "Pitch desks",
+    "Pitch decks", // Fixed typo: "Pitch desks" to "Pitch decks"
     "AI influencer modeling",
     "AI automations",
     "Content creation",
@@ -307,7 +321,7 @@ function SequentialVelocityScroll({
   return (
     <div
       className={cn(
-        "relative w-full text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-[5rem] text-white",
+        "velocity-scroll-container relative w-full font-bold tracking-[-0.02em] text-white",
         className,
       )}
       {...props}
@@ -319,8 +333,8 @@ function SequentialVelocityScroll({
           baseVelocity={defaultVelocity * (i % 2 === 0 ? 1 : -1)}
         />
       ))}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black-100"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black-100"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-black/50 to-transparent"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-black/50 to-transparent"></div>
     </div>
   );
 }
@@ -371,7 +385,7 @@ const Footer = () => {
   return (
     <footer
       ref={sectionRef}
-      className="w-full pt-20 pb-4 relative min-h-screen bg-black-100"
+      className="w-full pt-20 pb-0 relative bg-black-100"
       id="contact"
     >
       <style>{styles}</style>
@@ -402,8 +416,8 @@ const Footer = () => {
                   }`}
                 >
                   {word}
-                </span>
-              ))}
+                </span  >
+                ))}
             </h1>
           </div>
           <div className="w-full max-w-[90vw] sm:max-w-[40rem] mx-auto">
@@ -424,7 +438,7 @@ const Footer = () => {
 
         <div className="w-full md:w-1/2 flex justify-center">
           <div ref={tiltRef} className="tilt-wrapper">
-            <div className="svg-container">
+            < div className="svg-container">
               <Image
                 src="/astra3.svg"
                 alt="Astra SVG"
@@ -439,29 +453,32 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Sequential Velocity Scroll Component */}
-      <div className="w-full mt-12 mb-15 relative z-8">
+      {/* Sequential Velocity Scroll Component - Full Screen Width */}
+      <div className="w-screen relative left-1/2 transform -translate-x-1/2 mt-12 mb-20 z-8">
         <SequentialVelocityScroll defaultVelocity={2} numRows={2} />
       </div>
 
-      {/* Footer Content */}
-      <div className="w-full relative z-10 mt-20 mb-0 pb-0">
-      <div className="footer-content text-center">
-      Need a hand with anything above? Feel free to hit me up!
-      </div>
-      <div className="flex justify-center items-center text-white text-base font-sans">
-  <a href="#hero" className="flex items-center no-underline text-white text-base font-sans">
-    <FiLink className="mr-1" />
-    <span> Socials</span>
-  </a>
-</div>
-      <div className="location-container flex justify-center items-center gap-2 text-white">
-        <FaLocationArrow />
-        <span className="font-sans text-base text-white">Bengaluru</span>
-      </div>
-      <div className="copyright text-center mb-10">
-        © 2025 Yogeshwaran S - All rights reserved
-      </div>
+      {/* Footer Content with Gradient Background */}
+      <div className="w-screen relative left-1/2 transform -translate-x-1/2 z-5"
+           style={{ background: 'linear-gradient(to top, #0f172a, #164e63, #22d3ee)' }}>
+        <div className="w-full max-w-7xl mx-auto px-4 relative z-10 pt-8 pb-4">
+          <div className="footer-content text-center">
+            Need a hand with anything above? Feel free to hit me up!
+          </div>
+          <div className="flex justify-center items-center text-white text-base font-sans">
+            <a href="#hero" className="flex items-center no-underline text-white text-base font-sans">
+              <FiLink className="mr-1" />
+              <span> Socials</span>
+            </a>
+          </div>
+          <div className="location-container flex justify-center items-center gap-2 text-white">
+            <FaLocationArrow />
+            <span className="font-sans text-base text-white">Bengaluru</span>
+          </div>
+          <div className="copyright text-center mb-0">
+            © 2025 Yogeshwaran S - All rights reserved
+          </div>
+        </div>
       </div>
     </footer>
   );

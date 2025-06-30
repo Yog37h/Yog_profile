@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Website favicon */}
-        <link rel="icon" href="/l9.svg" sizes="any" />
+        <link rel="icon" href="/yog2.png" sizes="any" />
         {/* Preload critical images */}
         <link rel="preload" href="/tol1.avif" as="image" type="image/avif" />
         <link rel="preload" href="/tol2.avif" as="image" type="image/avif" />

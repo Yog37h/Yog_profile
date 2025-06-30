@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
             className="text-center md:text-left text-[40px] md:text-5xl lg:text-6xl transition-all duration-300 hover:text-purple hover:[text-shadow:0_0_10px_rgba(203,172,249,0.8),0_0_20px_rgba(203,172,249,0.6),0_0_30px_rgba(203,172,249,0.4)]"
           />
           <TextCycling
-            words="AI Freak"
+            words="Software Engineer, Developer, AI Freak, Hackathon winner,Content creator"
             className="text-center md:text-left text-[30px] md:text-4xl lg:text-5xl mt-[-20px] md:mt-[-30px] text-purple"
           />
 

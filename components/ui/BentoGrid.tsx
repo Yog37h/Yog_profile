@@ -161,7 +161,7 @@ export const BentoGridItem = ({
                   "reactjs-ar21.svg",
                   "express-svgrepo-com.svg",
                   "nodejs.svg",
-                  "nextjs1.svg",      
+                  "nextjs.svg",      
                   "nestjs.svg",
                   "springio-ar21.svg",
                   "mongodb-ar21.svg",
@@ -169,7 +169,7 @@ export const BentoGridItem = ({
                   "flutter.svg",
                   "angular.svg",
                   "nodejs.svg",
-                  "nextjs1.svg",
+                  "nextjs.svg",
                   "flutter.svg",
                   "angular.svg",
                   "gitlab.svg",
@@ -177,7 +177,7 @@ export const BentoGridItem = ({
                   "reactjs-ar21.svg",
                   "express-svgrepo-com.svg",
                   "nodejs.svg",
-                  "nextjs1.svg",
+                  "nextjs.svg",
                   "nestjs.svg",
                   "springio-ar21.svg",
                   "mongodb-ar21.svg",
@@ -185,7 +185,7 @@ export const BentoGridItem = ({
                   "flutter.svg",
                   "angular.svg",
                   "nodejs.svg",
-                  "nextjs1.svg",
+                  "nextjs.svg",
                   "flutter.svg",
                   "angular.svg",
                   "gitlab.svg",
@@ -224,11 +224,11 @@ export const BentoGridItem = ({
                   height={36}
                   loading="lazy"
                   sizes="36px"
-                  className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
+                  className="h-15 w-15 lg:h-9 lg:w-9 object-contain transition-transform duration-300hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
                 />
                 <TypeScriptIcon className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]" />
                 <JavaScriptIcon className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]" />
-                {["mysqlfis.svg", "git.svg", "docker.svg", "figma.svg", "aws1.svg", "gcp.svg", "jenkinsww.svg"].map((img, index) => (
+                {["mysqlfis.svg","git.svg", "docker.svg", "figma.svg", "aws1.svg", "gcp.svg", "jenkinsww.svg"].map((img, index) => (
                   <Image
                     key={index}
                     src={img}

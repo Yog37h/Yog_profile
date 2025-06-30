@@ -19,7 +19,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "Blending Dev-AI-Branding-Business",
+    title: "Dev-AI-Business",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -112,8 +112,8 @@ export const testimonials = [
   {
     quote: [
       "Published a high value Research Paper in scopus",
-      "Got Patented for an Automated Checkout invention",
-      "Participated in 10+ Nation-wide Hackathons",
+      "Got 3 patents for novelty in solving real world problems",
+      "Won 10+ Nation-wide Hackathons",
       "Got shortlisted among the Top Entrepreneurs in South India",
     ],
     name: "Breaking Boundaries",
@@ -132,10 +132,10 @@ export const testimonials = [
   },
   {
    quote: [
-      "Social media marketer",
-      "Been a part of College Handball Team",
+      "Handball and Cricket enthusiast",
+      "Mentor at Topmate",
       "Content writer at Medium",
-      "Fiver Freelancer making passive outcome",
+      "Fiver Freelancer making passive income",
     ],
     name: "On the Field, In the Mind",
     title: "Conditioning myself off the track",
@@ -153,8 +153,8 @@ export const testimonials = [
    {
     quote: [
       "Published a high value Research Paper in scopus",
-      "Got Patented for an Automated Checkout invention",
-      "Participated in 10+ Nation-wide Hackathons",
+      "Got 3 patents for novelty in solving real world problems",
+      "Won 10+ Nation-wide Hackathons",
       "Got shortlisted among the Top Entrepreneurs in South India",
     ],
     name: "Breaking Boundaries",
@@ -180,17 +180,17 @@ export const workExperience = [
   },
   {
     id: 3,
-    title: "iXP",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+    title: "ML & virtual computing intern - IIITDM Kancheepuram",
+    desc: "Developed and maintained image manipulation models in C with virtual migrations",
     className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp4.svg",
+    thumbnail: "/exp3.svg",
   },
   {
     id: 4,
-    title: "IITDM",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    title: "iXP Intern- SAP Labs India",
+    desc: "Spent 2 months exploring the production codebase at SAP Concur and optimized enhanced features",
     className: "md:col-span-2",
-    thumbnail: "/exp3.svg",
+    thumbnail: "/exp4.svg",
   },
 ];
 

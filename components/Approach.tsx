@@ -143,7 +143,7 @@ const Approach = () => {
       <div className="my-4 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         <Card
           title="Development & CI/CD"
-          icon={<AceternityIcon order="Phase 1" />}
+          icon={<AceternityIcon order="1" />}
           des="Love building and shipping fullstack products even stylish landing pages fast with CI/CD and SEO optimized - automating workflows for smoother, smarter development."
         >
           <CanvasRevealEffect
@@ -153,7 +153,7 @@ const Approach = () => {
         </Card>
         <Card
           title="Creative branding & Digital presence"
-          icon={<AceternityIcon order="Phase 2" />}
+          icon={<AceternityIcon order="2" />}
           des="Crafting standout brand identities with Story telling and boosting digital presence with content creation and canvas desigining Pitch desks that captivates, connects, and converts."
         >
           <CanvasRevealEffect
@@ -168,7 +168,7 @@ const Approach = () => {
         </Card>
         <Card
           title="Automations & business solutions"
-          icon={<AceternityIcon order="Phase 3" />}
+          icon={<AceternityIcon order="3" />}
           des="Building smart automations and scalable solutions to streamline workflows, optimize operations, and empower businesses with data-driven decision-making with N8N, Meta AI and more"
         >
           <CanvasRevealEffect

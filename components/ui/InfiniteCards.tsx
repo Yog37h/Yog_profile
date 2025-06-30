@@ -150,10 +150,10 @@ export const InfiniteMovingCards = ({
                 </ul>
                 <div className="mt-6 flex items-center">
                   <Image
-                    src="/lofi.svg"
+                    src="/yog2.png"
                     alt="Profile Image"
-                    width={40}
-                    height={40}
+                    width={20}
+                    height={20}
                     className="me-3"
                   />
                   <div>
@@ -192,10 +192,10 @@ export const InfiniteMovingCards = ({
                   </ul>
                   <div className="mt-6 flex items-center">
                     <Image
-                      src="/lofi.svg"
+                      src="/yog2.png"
                       alt="Profile Image"
-                      width={40}
-                      height={40}
+                      width={20}
+                      height={20}
                       className="me-3"
                     />
                     <div>
