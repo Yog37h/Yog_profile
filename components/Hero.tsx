@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pb-20 pt-36 relative flex items-center" ref={sectionRef}>
+    <div className="min-h-screen pb-20 pt-20 relative flex items-center" ref={sectionRef}>
       {/* Spotlights */}
       <div>
         <Spotlight
@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between w-full">
+      <div className="hero-container relative z-10 flex flex-col md:flex-row md:items-center md:justify-between w-full">
         {/* Main AVIF Image for Desktop */}
         <div className="hidden md:block relative w-1/2 lg:w-1/2 animate-bounce-slow">
           <Image
@@ -118,7 +118,7 @@ const Hero: React.FC = () => {
             className="text-center md:text-left text-[30px] md:text-4xl lg:text-5xl mt-[-20px] md:mt-[-30px] text-purple"
           />
 
-          <p className="text-center md:text-left md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+          <p className="hero-text-critical text-center md:text-left md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl font-medium">
             A Tech-savvy Professional with deep love for Technology and Business Ideologies
           </p>
 

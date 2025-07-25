@@ -1,7 +1,7 @@
 "use client";
-import { useEffect } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { motion, stagger, useAnimate } from "framer-motion";
+import { useEffect } from "react";
 
 export const TextGenerateEffect = ({
   words,
@@ -20,8 +20,8 @@ export const TextGenerateEffect = ({
         opacity: 1,
       },
       {
-        duration: 2,
-        delay: stagger(0.2),
+        duration: 0.8,
+        delay: stagger(0.1),
       }
     );
   }, [scope.current]);

@@ -17,7 +17,7 @@ export const TextCycling = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % cyclingTexts.length); // Cycle through words
-    }, 3000); // Change text every 3 seconds
+    }, 2500); // Change text every 2.5 seconds
 
     return () => clearInterval(interval); // Clear interval on component unmount
   }, [words]);
@@ -39,7 +39,7 @@ export const TextCycling = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="text-purple"
             style={{ display: "inline-block" }}
           >
