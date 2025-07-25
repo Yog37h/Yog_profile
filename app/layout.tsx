@@ -23,6 +23,7 @@ export default function RootLayout({
         {/* Website favicon */}
         <link rel="icon" href="/yog2.png" sizes="any" />
         {/* Preload critical images */}
+        <link rel="preload" href="/yog2.png" as="image" type="image/png" />
         <link rel="preload" href="/tol1.avif" as="image" type="image/avif" />
         <link rel="preload" href="/tol2.avif" as="image" type="image/avif" />
         <link rel="preload" href="/tol3.avif" as="image" type="image/avif" />
