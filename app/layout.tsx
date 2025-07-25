@@ -25,6 +25,9 @@ export default function RootLayout({
         <link rel="preload" href="/tol1.avif" as="image" type="image/avif" />
         <link rel="preload" href="/tol2.avif" as="image" type="image/avif" />
         <link rel="preload" href="/tol3.avif" as="image" type="image/avif" />
+        {/* Preload above-the-fold images */}
+        <link rel="preload" href="/m2.avif" as="image" type="image/avif" />
+        <link rel="preload" href="/ach2.avif" as="image" type="image/avif" />
         {/* Preload critical SVGs */}
         <link rel="preload" href="/footer-grid.svg" as="image" type="image/svg+xml" />
         {/* DNS prefetch for external resources */}

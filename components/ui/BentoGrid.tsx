@@ -99,7 +99,7 @@ export const BentoGridItem = ({
               alt={title as string}
               width={400}
               height={300}
-              loading={id === 1 || id === 2 ? "eager" : "lazy"} // Prioritize first two grid items
+              loading={id === 1 || id === 5 ? "eager" : "lazy"} // Prioritize m2.avif and ach2.avif (above-the-fold)
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className={cn(
                 imgClassName,

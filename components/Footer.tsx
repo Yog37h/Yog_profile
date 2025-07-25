@@ -440,11 +440,12 @@ const Footer = () => {
           <div ref={tiltRef} className="tilt-wrapper">
             < div className="svg-container">
               <Image
-                src="/astra3.webp"
+                src="/astra3.avif"
                 alt="Astra SVG"
                 width={500}
                 height={500}
                 loading="lazy"
+                priority={false}
                 sizes="(max-width: 768px) 100vw, 500px"
                 className="svg-image"
               />

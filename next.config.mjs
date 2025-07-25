@@ -8,9 +8,12 @@ const nextConfig = {
   },
   images: {
     unoptimized: true, // Required for static export
-    formats: ['image/avif', 'image/webp'], // Prefer modern formats
+    formats: ['image/avif', 'image/webp'], // Prefer modern formats (AVIF first for best compression)
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Enable modern image loading features
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // Enable compression for better performance
   compress: true,
