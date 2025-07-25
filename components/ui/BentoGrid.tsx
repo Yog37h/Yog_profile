@@ -197,6 +197,8 @@ export const BentoGridItem = ({
                     alt={`Technology Icon ${index + 1}`} // More descriptive alt
                     width={150} // Matches icon-container width
                     height={90} // Matches icon-container height
+                    loading={index < 6 ? "eager" : "lazy"} // Eager load first 6 icons
+                    priority={index < 3} // High priority for first 3 icons
                     className="icon"
                   />
                 ))}
@@ -213,7 +215,8 @@ export const BentoGridItem = ({
                   alt="Java"
                   width={36}
                   height={36}
-                  loading="lazy"
+                  loading="eager"
+                  priority={true}
                   sizes="36px"
                   className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
                 />
@@ -222,7 +225,8 @@ export const BentoGridItem = ({
                   alt="C"
                   width={36}
                   height={36}
-                  loading="lazy"
+                  loading="eager"
+                  priority={true}
                   sizes="36px"
                   className="h-15 w-15 lg:h-9 lg:w-9 object-contain transition-transform duration-300hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
                 />
@@ -235,7 +239,8 @@ export const BentoGridItem = ({
                     alt={`Technology Icon ${index + 6}`}
                     width={36}
                     height={36}
-                    loading="lazy"
+                    loading={index < 4 ? "eager" : "lazy"} // Eager load first 4 toolkit icons
+                    priority={index < 2} // High priority for first 2 toolkit icons
                     sizes="36px"
                     className="h-10 w-10 lg:h-9 lg:w-9 object-contain transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,191,255,0.7)]"
                   />

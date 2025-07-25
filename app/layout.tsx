@@ -29,6 +29,31 @@ export default function RootLayout({
         {/* Preload above-the-fold images */}
         <link rel="preload" href="/m2.avif" as="image" type="image/avif" />
         <link rel="preload" href="/ach2.avif" as="image" type="image/avif" />
+        {/* Preload footer astra image */}
+        <link rel="preload" href="/astra3.avif" as="image" type="image/avif" />
+        {/* Preload critical BentoGrid SVGs */}
+        <link rel="preload" href="/grid.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/java.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/c++.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/mysqlfis.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/git.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/docker.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/figma.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/aws1.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/gcp.svg" as="image" type="image/svg+xml" />
+        {/* Preload rolling animation SVGs for tech stack */}
+        <link rel="preload" href="/djangoproject-ar21.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/reactjs-ar21.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/express-svgrepo-com.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/nodejs.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/nextjs.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/nestjs.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/springio-ar21.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/mongodb-ar21.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/vuejs.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/flutter.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/angular.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/gitlab.svg" as="image" type="image/svg+xml" />
         {/* Preload critical SVGs */}
         <link rel="preload" href="/footer-grid.svg" as="image" type="image/svg+xml" />
         {/* DNS prefetch and preconnect for external resources */}

@@ -444,8 +444,8 @@ const Footer = () => {
                 alt="Astra SVG"
                 width={500}
                 height={500}
-                loading="lazy"
-                priority={false}
+                loading="eager"
+                priority={true}
                 sizes="(max-width: 768px) 100vw, 500px"
                 className="svg-image"
               />
