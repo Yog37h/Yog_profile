@@ -142,9 +142,9 @@ const Approach = () => {
       </div>
       <div className="my-4 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         <Card
-          title="Development & CI/CD"
+          title="Product Development & SDLC"
           icon={<AceternityIcon order="1" />}
-          des="Love building and shipping fullstack products even stylish landing pages fast with CI/CD and SEO optimized - automating workflows for smoother, smarter development."
+          des="Love building and shipping fullstack products even stylish landing pages fast with CI/CD and SEO optimized - enhancing with API integrations and AI bots."
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -152,9 +152,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Creative branding & Digital presence"
+          title="Entrepreurial branding & Digital presence"
           icon={<AceternityIcon order="2" />}
-          des="Crafting standout brand identities with Story telling and boosting digital presence with content creation and canvas desigining Pitch desks that captivates, connects, and converts."
+          des="Crafting standout brand identities with Story telling and boosting digital presence with content creation and desigining Pitch decks that captivates, connects, and converts."
         >
           <CanvasRevealEffect
             animationSpeed={3}

@@ -311,11 +311,12 @@ function SequentialVelocityScroll({
   const texts = [
     "DevOps",
     "Landing pages",
-    "Pitch decks", // Fixed typo: "Pitch desks" to "Pitch decks"
+    "Pitch decks",
     "AI influencer modeling",
+    "Trading",
     "AI automations",
-    "Content creation",
-    "Digital marketing",
+    "Fullstack Dev",
+    "Hackathons",
   ];
 
   return (
