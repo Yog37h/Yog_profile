@@ -63,7 +63,7 @@ export const BentoGridItem = ({
     },
   };
 
-  const driveLink = "https://drive.google.com/file/d/1xjMViu9CyKkF2K_gG-sOoFU166vY2VVh/view?usp=sharing";
+  const driveLink = "https://drive.google.com/file/d/1B60ole40UIg2YNjqAMgwr5AxWEQ0QgrT/view?usp=sharing";
 
   const handleClick = () => {
     setCopied(true);
@@ -258,7 +258,7 @@ export const BentoGridItem = ({
                 <Lottie options={defaultOptions} height={200} width={400} />
               </div>
               <MagicButton
-                title={copied ? "Thanks for the hi-fi dude !" : "Open my CV"}
+                title={copied ? "Thanks for the hi-fi !" : "Open my CV"}
                 icon={<IoCopyOutline />}
                 position="center"
                 handleClick={handleClick}

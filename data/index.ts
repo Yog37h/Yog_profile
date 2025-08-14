@@ -142,6 +142,16 @@ export const testimonials = [
   },
   {
     quote: [
+      "Published a high value Research Paper in scopus",
+      "Got 3 patents for novelty in solving real world problems",
+      "Won 10+ Nation-wide Hackathons",
+      "Got shortlisted among the Top Entrepreneurs in South India",
+    ],
+    name: "Breaking Boundaries",
+    title: "Some checkpoints in my racing journey",
+  },
+  {
+    quote: [
       "Rotaract President of the Institution",
       "College Joint Secretary",
       "College Ambassador for Hackathon committee",
@@ -150,15 +160,15 @@ export const testimonials = [
     name: "Leading with Impact",
     title: "List of honoraries along my road",
   },
-   {
-    quote: [
-      "Published a high value Research Paper in scopus",
-      "Got 3 patents for novelty in solving real world problems",
-      "Won 10+ Nation-wide Hackathons",
-      "Got shortlisted among the Top Entrepreneurs in South India",
+  {
+   quote: [
+      "Handball and Cricket enthusiast",
+      "Mentor at Topmate",
+      "Content writer at Medium",
+      "Fiver Freelancer making passive income",
     ],
-    name: "Breaking Boundaries",
-    title: "Some checkpoints in my racing journey",
+    name: "On the Field, In the Mind",
+    title: "Conditioning myself off the track",
   },
   
 ];
@@ -173,7 +183,7 @@ export const workExperience = [
   },
   {
     id: 2,
-    title: "Billbot GenAI Intern - SAP Labs India",
+    title: "GenAI Project Intern - SAP Labs India",
     desc: "Crafted an automated expense approval Slackbot with real time monitoring",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
@@ -188,7 +198,7 @@ export const workExperience = [
   {
     id: 4,
     title: "iXP Intern- SAP Labs India",
-    desc: "Spent 2 months exploring the production codebase at SAP Concur and optimized enhanced features",
+    desc: "Worked at SAP Concur production codebase, implemented an NLP feature to MS Teams chatbot and worked on Connected Experience",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },

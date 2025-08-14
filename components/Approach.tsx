@@ -144,7 +144,7 @@ const Approach = () => {
         <Card
           title="Product Development & SDLC"
           icon={<AceternityIcon order="1" />}
-          des="Love building and shipping fullstack products even stylish landing pages fast with CI/CD and SEO optimized - enhancing with API integrations and AI bots."
+          des="Love building and shipping fullstack products, even stylish landing pages fast with CI/CD and SEO optimized - enhancing with API integrations and firm backend developments"
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -152,7 +152,7 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Entrepreurial branding & Digital presence"
+          title="Entrepreneurial branding & Digital presence"
           icon={<AceternityIcon order="2" />}
           des="Crafting standout brand identities with Story telling and boosting digital presence with content creation and desigining Pitch decks that captivates, connects, and converts."
         >

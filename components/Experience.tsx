@@ -133,7 +133,7 @@ const Experience = () => {
           className="text-lg font-semibold text-gray-700 dark:text-gray-300 mt-[-220px]"
           style={{ lineHeight: "10" }}
         >
-          Swipe left or right to see more
+          Swipe right to see more
           <Image
             src="/hi.svg"
             alt="hi"
