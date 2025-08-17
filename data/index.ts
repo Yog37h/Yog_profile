@@ -51,7 +51,7 @@ export const gridItems = [
   {
     id: 5,
     title: "Hall of Fame",
-    description: "/portfo.avif",
+    description: "",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-50 left-20 bottom-0 md:w-97 w-100",
     titleClassName: "justify-start",

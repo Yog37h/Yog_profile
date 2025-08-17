@@ -310,13 +310,15 @@ function SequentialVelocityScroll({
 }: VelocityScrollProps) {
   const texts = [
     "DevOps",
-    "Landing pages",
+    "Hackathons",
     "Pitch decks",
     "AI influencer modeling",
     "Trading",
     "AI automations",
     "Fullstack Dev",
-    "Hackathons",
+    "Content creation",
+    "Mentorships",
+    "Landing pages",
   ];
 
   return (
