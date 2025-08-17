@@ -55,7 +55,7 @@ export const gridItems = [
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-50 left-20 bottom-0 md:w-97 w-100",
     titleClassName: "justify-start",
-    img: "ach2.avif",
+    img: "portfo.avif",
     spareImg: "/grid.svg",
   },
   {
@@ -119,7 +119,6 @@ export const testimonials = [
     name: "Breaking Boundaries",
     title: "Some checkpoints in my racing journey",
   },
-
   {
     quote: [
       "Rotaract President of the Institution",
@@ -135,7 +134,7 @@ export const testimonials = [
       "Handball and Cricket enthusiast",
       "Mentor at Topmate",
       "Content writer at Medium",
-      "Fiver Freelancer making passive income",
+      "Fiver Freelancer making passive outcome",
     ],
     name: "On the Field, In the Mind",
     title: "Conditioning myself off the track",
@@ -165,7 +164,7 @@ export const testimonials = [
       "Handball and Cricket enthusiast",
       "Mentor at Topmate",
       "Content writer at Medium",
-      "Fiver Freelancer making passive income",
+      "Fiver Freelancer making passive outcome",
     ],
     name: "On the Field, In the Mind",
     title: "Conditioning myself off the track",
