@@ -197,7 +197,7 @@ export const workExperience = [
   {
     id: 4,
     title: "iXP Intern- SAP Labs India",
-    desc: "Worked at SAP Concur production codebase, implemented an NLP feature to MS Teams chatbot and worked on Connected Experience",
+    desc: "Worked at SAP Concur production in MS Teams NLP chatbot and Connected Experience",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
